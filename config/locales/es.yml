@@ -1,0 +1,52 @@
+es:
+  helpers:
+    submit:
+      create: "Crear %{model}"
+      submit: "Guardar %{model}"
+      update: "Actualizar %{model}"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Debes ingresar un correo electrónico"
+              taken: "Por favor, usa un correo electrónico distinto"
+              invalid: "Por favor, ingresa un correo electrónico válido"
+            password:
+              blank: "Por favor, ingresa una contraseña"
+              confirmation: "La contraseña no coincide con el de confirmación"
+            password_confirmation:
+              blank: "Por favor ingresa la confirmación de la contraseña"
+            username:
+              blank: "Debe ingresar un nombre de usuario"
+            name:
+              blank: "Debe ingresar su nombre"
+    models:
+      business: "Empresa"
+      user: "Usuario"
+      addendum: "Adenda"
+      category: "Categoría"
+      client: "Cliente"
+      contract: "Contrato"
+      control_guide: "Guía Interna"
+      driver: "Transportista"
+      invoice: "Factura"
+      product: "Producto"
+      product_lot: "Lote de Producto"
+      purchase_order: "Orden de Compra"
+      remission_guide: "Guía de Remisión"
+      sales_order: "Orden de Venta"
+      setting: "Configuración"
+      supplier: "Proveedor"
+      vehicle: "Vehículo"
+  unauthorized:
+    subject:
+      client: "Cliente"
+    default: "No estas autorizado para acceder a esta página"
+    create:
+      all: "No estas autorizado para Crear."
+    update:
+      all: "No estas autorizado para Actualizar."
+    destroy: 
+      all: "No estas autorizado para Eliminar."

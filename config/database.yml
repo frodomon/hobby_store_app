@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: auth_app_production
-  username: auth_app
-  password: <%= ENV['AUTH_APP_DATABASE_PASSWORD'] %>
+  username: <%= ENV['PROPEBIS_DATABASE_USER'] %>
+  password: <%= ENV['PROPEBIS_DATABASE_PASSWORD'] %>
