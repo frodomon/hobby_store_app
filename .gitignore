@@ -24,3 +24,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Untracked files:
+/config/initializers/app_env_vars.rb
