@@ -22,9 +22,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.inet     :last_sign_in_ip
 
       ## Confirmable
-      # t.string   :confirmation_token
-      # t.datetime :confirmed_at
-      # t.datetime :confirmation_sent_at
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
@@ -36,10 +36,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :name
       t.string :last_name
-      #t.string :doi
-      #t.string :dci
-      #t.string :pkm_id
-      #t.string :ygo_id
+      t.string :doi
+      t.string :dci
+      t.string :pkm_id
+      t.string :ygo_id
+      t.string :bloobie_id
+      t.references :ubigeo
       t.string :mobile
       t.string :address_l1
       t.string :address_l2
@@ -53,7 +55,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :email,                unique: true
     add_index :users, :username,             unique: true
     add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
+    add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
   end
 end

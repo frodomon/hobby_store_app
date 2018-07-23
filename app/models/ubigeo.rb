@@ -1,0 +1,2 @@
+class Ubigeo < ApplicationRecord
+end

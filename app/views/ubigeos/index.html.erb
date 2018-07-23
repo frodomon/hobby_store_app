@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ubigeos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ug</th>
+      <th>Name</th>
+      <th>Parent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ubigeos.each do |ubigeo| %>
+      <tr>
+        <td><%= ubigeo.ug_id %></td>
+        <td><%= ubigeo.name %></td>
+        <td><%= ubigeo.parent_id %></td>
+        <td><%= link_to 'Show', ubigeo %></td>
+        <td><%= link_to 'Edit', edit_ubigeo_path(ubigeo) %></td>
+        <td><%= link_to 'Destroy', ubigeo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ubigeo', new_ubigeo_path %>

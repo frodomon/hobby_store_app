@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ubigeos
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	devise_for :users, controllers: { registrations: 'user/registrations', sessions: 'user/sessions', passwords:'user/passwords' },
   path: '', path_names: {

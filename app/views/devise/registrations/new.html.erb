@@ -3,19 +3,67 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <% for role in User::ROLES %>
-    <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-    <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-  <% end %>
-  <%= text_field_tag "user[roles][]", "" %>
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <% if can? :manage, User %>
+    <div class="roles">
+      <% for role in User::ROLES %>
+        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+        <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+      <% end %>
+      <%= text_field_tag "user[roles][]", "" %>
+    </div>
+  <% end %> 
+  <div class="personal_info">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :doi %><br />
+      <%= f.text_field :doi %>
+    </div>
+    <div class="field">
+      <%= f.label :address_l1 %><br />
+      <%= f.text_field :address_l1 %>
+    </div>
+    <div class="field">
+      <%= f.label :address_l2 %><br />
+      <%= f.text_field :address_l2 %>
+    </div>
+    <div class="field">
+      <%= f.label :genre %><br />
+      <%= f.text_field :genre %>
+    </div>
+    <div class="field">
+      <%= f.label :birthday %><br />
+      <%= f.date_field :birthday %>
+    </div>
+    <div class="field">
+      <%= f.label :mobile %><br />
+      <%= f.number_field :mobile %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+  <div class="game_info">
+    <div class="field">
+      <%= f.label :dci %><br />
+      <%= f.text_field :dci %>
+    </div>
+    <div class="field">
+      <%= f.label :pkm_id %><br />
+      <%= f.text_field :pkm_id %>
+    </div>
+    <div class="field">
+      <%= f.label :ygo_id %><br />
+      <%= f.text_field :ygo_id %>
+    </div>
+    <div class="field">
+      <%= f.label :bloobie_id %><br />
+      <%= f.text_field :bloobie_id %>
+    </div>
+
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -24,7 +72,7 @@
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div
+  </div>
 
   <div class="field">
     <%= f.label :password %>

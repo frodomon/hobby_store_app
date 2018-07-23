@@ -1,0 +1,32 @@
+<%= form_with(model: ubigeo, local: true) do |form| %>
+  <% if ubigeo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ubigeo.errors.count, "error") %> prohibited this ubigeo from being saved:</h2>
+
+      <ul>
+      <% ubigeo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ug_id %>
+    <%= form.number_field :ug_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parent_id %>
+    <%= form.number_field :parent_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
