@@ -42,11 +42,11 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :last_name, :username, :doi, :dci, :pkm_id, :ygo_id, :bloobie_id, :mobile, :address_l1, :address_l2, :birthday, :genre, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:title, :name, :last_name, :username, :doi, :avatar,:mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask])
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :last_name, :username, :doi, :dci, :pkm_id, :ygo_id, :bloobie_id, :mobile, :address_l1, :address_l2, :birthday, :genre, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:title, :name, :last_name, :username, :doi, :avatar, :mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask])
   end
 
   # The path used after sign up.

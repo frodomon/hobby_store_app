@@ -50,27 +50,32 @@ ActiveRecord::Schema.define(version: 2018_06_22_214956) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "title"
     t.string "username"
     t.string "name"
     t.string "last_name"
+    t.string "genre"
     t.string "doi"
-    t.string "dci"
+    t.string "mobile"
+    t.string "telephone"
+    t.date "birthdate"
+    t.string "business_name"
+    t.string "ruc"
+    t.string "mtg_id"
     t.string "pkm_id"
     t.string "ygo_id"
     t.string "bloobie_id"
-    t.bigint "ubigeo_id"
-    t.string "mobile"
-    t.string "address_l1"
-    t.string "address_l2"
-    t.date "birthday"
-    t.string "genre"
-    t.string "roles_mask"
+    t.string "dbsuper_id"
+    t.string "workcenter"
+    t.string "avatar"
+    t.string "roles_mask", default: "8"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["doi"], name: "index_users_on_doi", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["ubigeo_id"], name: "index_users_on_ubigeo_id"
+    t.index ["ruc"], name: "index_users_on_ruc", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

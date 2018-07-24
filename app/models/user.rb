@@ -9,8 +9,9 @@ class User < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :username
   validates_presence_of :email
+  mount_uploader :avatar, AvatarUploader
 
-  ROLES = %i[Admin Manager Sales Auctioneer User]
+  ROLES = %i[SuperAdmin Manager SalesForce Auctioneer User]
 
   def full_name
     a ="#{try(:name)}  #{try(:last_name)}".to_s                                                                                                                                                                                                                                                                                                                                                                                                                 
