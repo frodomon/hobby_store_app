@@ -32,6 +32,9 @@ gem 'rolify'
 
 #Image Uoloader
 gem 'carrierwave', '~> 1.0'
+#Inspinia gems
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'font-awesome-rails', '4.7.0.4'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
