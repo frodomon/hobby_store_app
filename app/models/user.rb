@@ -10,8 +10,16 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_presence_of :email
   mount_uploader :avatar, AvatarUploader
+  has_one :address, dependent: :destroy
+  accepts_nested_attributes_for :address, allow_destroy: true
+  validates_associated :address
 
   ROLES = %i[SuperAdmin Manager SalesForce Auctioneer User]
+
+  def self.with_address
+    build_address if address.nil?
+    self
+  end
 
   def full_name
     a ="#{try(:name)}  #{try(:last_name)}".to_s                                                                                                                                                                                                                                                                                                                                                                                                                 

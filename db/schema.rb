@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_214956) do
+ActiveRecord::Schema.define(version: 2018_07_25_161613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "shortname"
+    t.string "house_type"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "departamento"
+    t.string "provincia"
+    t.string "distrito"
+    t.bigint "ubigeo_id"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ubigeo_id"], name: "index_addresses_on_ubigeo_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"

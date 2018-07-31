@@ -1,18 +1,40 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
+  layout 'empty'
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    
+    build_resource({})
+    self.resource.address = Address.new
+    respond_with self.resource
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    resource = build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -42,11 +64,12 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:title, :name, :last_name, :username, :doi, :avatar,:mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask])
+    allow = [:title, :name, :last_name, :username, :doi, :avatar,:mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask, address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]]    
+    devise_parameter_sanitizer.permit(:sign_up, keys: allow)
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:title, :name, :last_name, :username, :doi, :avatar, :mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:title, :name, :last_name, :username, :doi, :avatar, :mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask, address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]])
   end
 
   # The path used after sign up.
@@ -58,4 +81,5 @@ class User::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end

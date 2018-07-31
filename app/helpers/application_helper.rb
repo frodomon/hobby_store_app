@@ -1,4 +1,7 @@
 module ApplicationHelper
+
+  
+
 	#Visualizar Booleans
 	def human_boolean(boolean)
     boolean ? 'Si' : 'No'

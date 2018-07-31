@@ -1,6 +1,11 @@
 module StaticPagesHelper
+
 	def resource_name
     :user
+  end
+
+  def resource_nombre
+    @user
   end
  
   def resource
@@ -10,4 +15,5 @@ module StaticPagesHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
 end
