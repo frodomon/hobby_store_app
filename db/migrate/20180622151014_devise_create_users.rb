@@ -51,7 +51,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :dbsuper_id
       t.string :workcenter
       t.string :avatar      
-      t.string :roles_mask, default: 8                
+      t.string :roles_mask, default: 16               
 
       t.timestamps null: false
     end

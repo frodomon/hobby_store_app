@@ -28,12 +28,13 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
     user ||= User.new
-    if user.has_role? :Admin
+    if user.has_role? :SuperAdmin
       can :manage, :all
     elsif user.has_role? :Manager
       can :read, :all?
-    elsif user.has_role? :Sales
+    elsif user.has_role? :SalesForce
     
     elsif user.has_role? :Auctioneer
     

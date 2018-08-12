@@ -16,6 +16,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     resource = build_resource(sign_up_params)
+    resource.roles = ["","",'user',""]
 
     resource.save
     yield resource if block_given?
@@ -64,12 +65,12 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    allow = [:title, :name, :last_name, :username, :doi, :avatar,:mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask, address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]]    
+    allow = [:title, :name, :last_name, :username, :doi, :avatar,:mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, roles: [], address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]]    
     devise_parameter_sanitizer.permit(:sign_up, keys: allow)
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:title, :name, :last_name, :username, :doi, :avatar, :mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, :role_mask, address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:title, :name, :last_name, :username, :doi, :avatar, :mtg_id, :pkm_id, :ygo_id, :bloobie_id, :dbsuper_id, :telephone, :mobile, :email, :business_name, :ruc, :workcenter, :birthdate, :genre, :password, :password_confirmation, roles: [], address_attributes: [:user_id, :shortname, :house_type, :address_line1, :address_line2, :departamento, :provincia, :distrito, :ubigeo_id, :postal_code]])
   end
 
   # The path used after sign up.
