@@ -1,0 +1,188 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :barcode %>
+    <%= form.text_field :barcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sku %>
+    <%= form.text_field :sku %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, options = { :prompt => 'Seleccione una Categoría'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_category_id %>
+    <%= form.collection_select :sub_category_id, SubCategory.order(:name), :id, :name, options = { :prompt => 'Seleccione una Sub Categoría'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :short_description %>
+    <%= form.text_field :short_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :large_description %>
+    <%= form.text_area :large_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_price %>
+    <%= form.text_field :full_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :presale_price %>
+    <%= form.text_field :presale_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :otto_price %>
+    <%= form.text_field :otto_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game_type_id %>
+    <%= form.collection_select :game_type_id, GameType.order(:name), :id, :name, options = { :prompt => 'Seleccione un Tipo de Juego'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game_style_id %>
+    <%= form.collection_select :game_style_id, GameStyle.order(:name), :id, :name, options = { :prompt => 'Seleccione un Estilo de Juego'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thematic_id %>
+    <%= form.collection_select :thematic_id, Thematic.order(:name), :id, :name, options = { :prompt => 'Seleccione una Tematica'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suggested_age_id %>
+    <%= form.collection_select :suggested_age_id, SuggestedAge.order(:name), :id, :name, options = { :prompt => 'Seleccione una Edad Sugerida'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suggested_players %>
+    <%= form.text_field :suggested_players %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game_duration %>
+    <%= form.text_field :game_duration %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :editorial %>
+    <%= form.text_field :editorial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :width %>
+    <%= form.text_field :width %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length %>
+    <%= form.text_field :length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game_line_id %>
+    <%= form.collection_select :game_line_id, GameLine.order(:name), :id, :name, options = { :prompt => 'Seleccione una Linea de Juego'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_reel_url %>
+    <%= form.text_field :video_reel_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_how_to_url %>
+    <%= form.text_field :video_how_to_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_gameplay_url %>
+    <%= form.text_field :video_gameplay_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_box %>
+    <%= form.text_field :img_box %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_box_content %>
+    <%= form.text_field :img_box_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_board_set %>
+    <%= form.text_field :img_board_set %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_board_midgame %>
+    <%= form.text_field :img_board_midgame %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ranking_bgg %>
+    <%= form.text_field :ranking_bgg %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  
+<% end %>

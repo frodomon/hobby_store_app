@@ -10,31 +10,37 @@
               <img alt="image" class="img-circle" src="<%= image_url 'profile_small.jpg' %>"/>
             <% end %>
           </div>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="clear">
-                            <span class="block m-t-xs">
-                                <strong class="font-bold"><%= current_user.name %> <%= current_user.last_name %></strong>
-                            </span> <span class="text-muted text-xs block"><%= current_user.username %> <b class="caret"></b></span>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li>
-                          <%= link_to "Editar Perfil", edit_user_registration_path(current_user.id) %>
-                        </li>
-                        <li><a href="">Contacts</a>
-                        </li>
-                        <li><a href="">Mailbox</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-                        </li>
-                    </ul>
-                </div>
-                <div class="logo-element">
-                    IN+
-                </div>
-            </li>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <span class="clear">
+                <span class="block m-t-xs">
+                  <strong class="font-bold"><%= current_user.name %> <%= current_user.last_name %></strong>
+                  </span> <span class="text-muted text-xs block"><%= current_user.username %> <b class="caret"></b></span>
+              </span>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+              <li>
+                <%= link_to "Editar Perfil", edit_user_registration_path(current_user.id) %>
+              </li>
+              <li><a href="">Contacts</a>
+              </li>
+              <li><a href="">Mailbox</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+        </div>
+        <div class="logo-element">
+          IN+
+        </div>
+      </li>
+      <li class="<%= 'active' if current_page?('/') %>">
+        <%= link_to "/" do %>
+          <i class="fa fa-home"></i> <span class="nav-label">Inicio</span>
+        <% end %>
+      </li>
+      <
     <% if false %>  
             <li class="<%= is_active_controller('dashboards') %>">
                 <a href=""><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Dashboards</span> <span class="fa arrow"></span></a>
@@ -219,31 +225,60 @@
                 </ul>
             </li>
     <% end %>
-            <li>
-                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label" data-i18n="nav.menulevels">Menu Levels </span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
 
-                        </ul>
-                    </li>
-                    <li><a href="#">Second Level Item</a></li>
-                    <li>
-                        <a href="#">Second Level Item</a></li>
-                    <li>
-                        <a href="#">Second Level Item</a></li>
-                </ul>
-            </li>
+    <li class="<%= is_active_mantenimiento() %>">
+      <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level collapse <%= is_active_mantenimiento() %>">
+      </ul>      
+    </li> 
+    </li>
+    <li class="<%= is_active_product_line() %>">
+      <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Linea de Productos</span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level collapse <%= is_active_product_line() %>">
+        <li class="<%= is_active_controller('products') %>">
+          <%= link_to 'Productos', products_path %>
+        </li>
+        <li class="<%= is_active_controller('categories') %>">
+          <%= link_to 'Categorias de Producto', categories_path %>
+        </li>
+        <li class="<%= is_active_controller('sub_categories') %>">
+          <%= link_to 'Sub Categorias de Producto', sub_categories_path %>
+        </li>
+        <li class="<%= is_active_controller('game_types') %>">
+          <%= link_to 'Tipos de Juego', game_types_path %>
+        </li>
+        <li class="<%= is_active_controller('game_styles') %>">
+          <%= link_to 'Estilos de Juego', game_styles_path %>
+        </li>
+        <li class="<%= is_active_controller('thematics') %>">
+          <%= link_to 'Tematica', thematics_path %>
+        </li>
+        <li class="<%= is_active_controller('suggested_ages') %>">
+          <%= link_to 'Edad Sugerida', suggested_ages_path %>
+        </li>
+        <li class="<%= is_active_controller('game_lines') %>">
+          <%= link_to 'Lineas de Juego', game_lines_path %>
+        </li>      
+      </ul>
+    </li>
+
+    <li>
+      <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label" data-i18n="nav.menulevels">Menu Levels </span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level">
+        <li>
+          <a href="#">Third Level <span class="fa arrow"></span></a>
+          <ul class="nav nav-third-level">
+            <li><a href="#">Third Level Item</a></li>
+            <li><a href="#">Third Level Item</a></li>
+            <li><a href="#">Third Level Item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Second Level Item</a></li>
+        <li><a href="#">Second Level Item</a></li>
+        <li><a href="#">Second Level Item</a></li>
+      </ul>
+    </li>
+    
     <% if false %>
             <li class="<%= is_active_controller('cssanimations') %>">
                 <%= link_to cssanimations_index_path do %>

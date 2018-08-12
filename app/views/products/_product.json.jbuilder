@@ -1,0 +1,2 @@
+json.extract! product, :id, :name, :barcode, :sku, :category_id, :sub_category_id, :short_description, :large_description, :full_price, :presale_price, :otto_price, :game_type_id, :game_style_id, :thematic_id, :suggested_age_id, :suggested_players, :game_duration, :language, :author, :origin, :brand, :editorial, :weight, :height, :width, :length, :game_line_id, :video_reel_url, :video_how_to_url, :video_gameplay_url, :img_box, :img_box_content, :img_board_set, :img_board_midgame, :ranking_bgg, :created_at, :updated_at
+json.url product_url(product, format: :json)

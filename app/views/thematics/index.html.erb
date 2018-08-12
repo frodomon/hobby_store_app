@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Thematics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thematics.each do |thematic| %>
+      <tr>
+        <td><%= thematic.name %></td>
+        <td><%= link_to 'Show', thematic %></td>
+        <td><%= link_to 'Edit', edit_thematic_path(thematic) %></td>
+        <td><%= link_to 'Destroy', thematic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thematic', new_thematic_path %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :products
+  resources :game_lines
+  resources :suggested_ages
+  resources :thematics
+  resources :game_styles
+  resources :game_types
   resources :sub_categories
   resources :categories
   resources :ubigeos

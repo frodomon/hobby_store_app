@@ -1,0 +1,93 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Barcode</th>
+      <th>Sku</th>
+      <th>Category</th>
+      <th>Sub category</th>
+      <th>Short description</th>
+      <th>Large description</th>
+      <th>Full price</th>
+      <th>Presale price</th>
+      <th>Otto price</th>
+      <th>Game type</th>
+      <th>Game style</th>
+      <th>Thematic</th>
+      <th>Suggested age</th>
+      <th>Suggested players</th>
+      <th>Game duration</th>
+      <th>Language</th>
+      <th>Author</th>
+      <th>Origin</th>
+      <th>Brand</th>
+      <th>Editorial</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Length</th>
+      <th>Game line</th>
+      <th>Video reel url</th>
+      <th>Video how to url</th>
+      <th>Video gameplay url</th>
+      <th>Img box</th>
+      <th>Img box content</th>
+      <th>Img board set</th>
+      <th>Img board midgame</th>
+      <th>Ranking bgg</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.barcode %></td>
+        <td><%= product.sku %></td>
+        <td><%= Category.find(product.category_id).name %></td>
+        <td><%= SubCategory.find(product.sub_category_id).name %></td>
+        <td><%= product.short_description %></td>
+        <td><%= product.large_description %></td>
+        <td><%= product.full_price %></td>
+        <td><%= product.presale_price %></td>
+        <td><%= product.otto_price %></td>
+        <td><%= GameType.find(product.game_type_id).name %></td>
+        <td><%= GameStyle.find(product.game_style_id).name %></td>
+        <td><%= Thematic.find(product.thematic_id).name %></td>
+        <td><%= SuggestedAge.find(product.suggested_age_id).name %></td>
+        <td><%= product.suggested_players %></td>
+        <td><%= product.game_duration %></td>
+        <td><%= product.language %></td>
+        <td><%= product.author %></td>
+        <td><%= product.origin %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.editorial %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.height %></td>
+        <td><%= product.width %></td>
+        <td><%= product.length %></td>
+        <td><%= GameLine.find(product.game_line_id).name %></td>
+        <td><%= product.video_reel_url %></td>
+        <td><%= product.video_how_to_url %></td>
+        <td><%= product.video_gameplay_url %></td>
+        <td><%= product.img_box %></td>
+        <td><%= product.img_box_content %></td>
+        <td><%= product.img_board_set %></td>
+        <td><%= product.img_board_midgame %></td>
+        <td><%= product.ranking_bgg %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

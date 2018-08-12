@@ -62,15 +62,54 @@ module ApplicationHelper
     end
   end
 
-  def is_active_controller(controller_name, class_name = nil)
-    if params[:controller] == controller_name
-      class_name == nil ? "active" : class_name
-    else
-      nil
-    end
+  def is_active_controller(controller_name)
+    params[:controller] == controller_name ? "active" : nil
   end
 
   def is_active_action(action_name)
     params[:action] == action_name ? "active" : nil
   end
+
+  def is_active_mantenimiento()
+    controller_name = params[:controller]
+    case controller_name
+      when 'businesses'
+        'active'
+      when 'suppliers'
+        'active'
+      when 'clients'
+        'active'
+      when 'vehicles'
+        'active'
+      when 'drivers'
+        'active'
+      else
+        nil
+    end
+  end
+
+  def is_active_product_line()
+    controller_name = params[:controller]
+    case controller_name
+      when 'products'
+        'active'
+      when 'categories'
+        'active'
+      when 'sub_categories'
+        'active'
+      when 'game_types'
+        'active'
+      when 'game_styles'
+        'active'
+      when 'thematics'
+        'active'
+      when 'suggested_ages'
+        'active'
+      when 'game_lines'
+        'active'
+      else
+        nil
+    end
+  end
+  
 end

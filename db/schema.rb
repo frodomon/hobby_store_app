@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_174915) do
+ActiveRecord::Schema.define(version: 2018_08_12_041828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,70 @@ ActiveRecord::Schema.define(version: 2018_08_06_174915) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "game_lines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "barcode"
+    t.string "sku"
+    t.bigint "category_id"
+    t.bigint "sub_category_id"
+    t.string "short_description"
+    t.text "large_description"
+    t.float "full_price"
+    t.float "presale_price"
+    t.float "otto_price"
+    t.bigint "game_type_id"
+    t.bigint "game_style_id"
+    t.bigint "thematic_id"
+    t.bigint "suggested_age_id"
+    t.string "suggested_players"
+    t.string "game_duration"
+    t.string "language"
+    t.string "author"
+    t.string "origin"
+    t.string "brand"
+    t.string "editorial"
+    t.float "weight"
+    t.float "height"
+    t.float "width"
+    t.float "length"
+    t.bigint "game_line_id"
+    t.string "video_reel_url"
+    t.string "video_how_to_url"
+    t.string "video_gameplay_url"
+    t.string "img_box"
+    t.string "img_box_content"
+    t.string "img_board_set"
+    t.string "img_board_midgame"
+    t.string "ranking_bgg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["game_line_id"], name: "index_products_on_game_line_id"
+    t.index ["game_style_id"], name: "index_products_on_game_style_id"
+    t.index ["game_type_id"], name: "index_products_on_game_type_id"
+    t.index ["sub_category_id"], name: "index_products_on_sub_category_id"
+    t.index ["suggested_age_id"], name: "index_products_on_suggested_age_id"
+    t.index ["thematic_id"], name: "index_products_on_thematic_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -54,6 +118,18 @@ ActiveRecord::Schema.define(version: 2018_08_06_174915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_sub_categories_on_category_id"
+  end
+
+  create_table "suggested_ages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "thematics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ubigeos", force: :cascade do |t|
