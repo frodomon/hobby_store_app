@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :sales_order_details
+  resources :sales_orders
+  resources :delivery_methods
+  resources :purchase_order_details
+  resources :purchase_orders
+  resources :store_credits
+  resources :suppliers
   resources :inventories
   resources :warehouses
   resources :products

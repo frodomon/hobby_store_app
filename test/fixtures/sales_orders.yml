@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  client: 
+  order_date: 2018-08-16
+  delivery_date: 2018-08-16
+  delivery_method: one
+  delivery_cost: 1.5
+  discount_coupon: MyString
+  ammount: 1.5
+  delivery_address: MyString
+  status: false
+
+two:
+  user: two
+  client: 
+  order_date: 2018-08-16
+  delivery_date: 2018-08-16
+  delivery_method: two
+  delivery_cost: 1.5
+  discount_coupon: MyString
+  ammount: 1.5
+  delivery_address: MyString
+  status: false

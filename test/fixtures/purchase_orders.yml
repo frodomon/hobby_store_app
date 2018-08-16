@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supplier: one
+  order_date: 2018-08-16
+  delivery_date: 2018-08-16
+  user: one
+  ammount: 1.5
+  registered: false
+
+two:
+  supplier: two
+  order_date: 2018-08-16
+  delivery_date: 2018-08-16
+  user: two
+  ammount: 1.5
+  registered: false

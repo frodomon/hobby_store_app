@@ -235,6 +235,9 @@
         <li class="<%= is_active_controller('warehouses') %>">
           <%= link_to 'Almacenes', warehouses_path %>
         </li>
+        <li class="<%= is_active_controller('suppliers') %>">
+          <%= link_to 'Proveedores', suppliers_path %>
+        </li>
       </ul>      
     </li> 
     </li>
@@ -273,9 +276,29 @@
         <li class="<%= is_active_controller('inventories') %>">
           <%= link_to 'Inventario', inventories_path %>
         </li>
+        
       </ul>
     </li>
 
+     <li class="<%= is_active_store_credit() %>">
+      <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Crédito en Tienda</span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level collapse <%= is_active_inventory_mgmt() %>">
+        <li class="<%= is_active_controller('store_credits') %>">
+          <%= link_to 'Crédito', store_credits_path %>
+        </li>
+        
+      </ul>
+    </li>
+
+    <li class="<%= is_active_compras() %>">
+        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= is_active_compras() %>">
+          <li class="<%= is_active_controller('purchase_orders') %>">
+            <%= link_to 'Órdenes de Compra', purchase_orders_path %>
+          </li>
+        </ul>
+      </li>
+    
     <li>
       <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label" data-i18n="nav.menulevels">Menu Levels </span><span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">

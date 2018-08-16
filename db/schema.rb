@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_191739) do
+ActiveRecord::Schema.define(version: 2018_08_16_224130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 2018_08_16_191739) do
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delivery_methods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,6 +120,31 @@ ActiveRecord::Schema.define(version: 2018_08_16_191739) do
     t.index ["thematic_id"], name: "index_products_on_thematic_id"
   end
 
+  create_table "purchase_order_details", force: :cascade do |t|
+    t.bigint "purchase_order_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.float "unit_price"
+    t.float "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchase_order_details_on_product_id"
+    t.index ["purchase_order_id"], name: "index_purchase_order_details_on_purchase_order_id"
+  end
+
+  create_table "purchase_orders", force: :cascade do |t|
+    t.bigint "supplier_id"
+    t.date "order_date"
+    t.date "delivery_date"
+    t.bigint "user_id"
+    t.float "ammount"
+    t.boolean "registered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
+    t.index ["user_id"], name: "index_purchase_orders_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -122,6 +153,45 @@ ActiveRecord::Schema.define(version: 2018_08_16_191739) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "sales_order_details", force: :cascade do |t|
+    t.bigint "sales_order_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.float "unit_price"
+    t.float "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sales_order_details_on_product_id"
+    t.index ["sales_order_id"], name: "index_sales_order_details_on_sales_order_id"
+  end
+
+  create_table "sales_orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "client"
+    t.date "order_date"
+    t.date "delivery_date"
+    t.bigint "delivery_method_id"
+    t.float "delivery_cost"
+    t.string "discount_coupon"
+    t.float "ammount"
+    t.string "delivery_address"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_method_id"], name: "index_sales_orders_on_delivery_method_id"
+    t.index ["user_id"], name: "index_sales_orders_on_user_id"
+  end
+
+  create_table "store_credits", force: :cascade do |t|
+    t.bigint "user_id"
+    t.float "ammount"
+    t.string "detail"
+    t.date "credit_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_store_credits_on_user_id"
   end
 
   create_table "sub_categories", force: :cascade do |t|
@@ -134,6 +204,19 @@ ActiveRecord::Schema.define(version: 2018_08_16_191739) do
 
   create_table "suggested_ages", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "ruc"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "contact"
+    t.string "contact_mobile"
+    t.string "contact_email"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -224,5 +307,14 @@ ActiveRecord::Schema.define(version: 2018_08_16_191739) do
 
   add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "warehouses"
+  add_foreign_key "purchase_order_details", "products"
+  add_foreign_key "purchase_order_details", "purchase_orders"
+  add_foreign_key "purchase_orders", "suppliers"
+  add_foreign_key "purchase_orders", "users"
+  add_foreign_key "sales_order_details", "products"
+  add_foreign_key "sales_order_details", "sales_orders"
+  add_foreign_key "sales_orders", "delivery_methods"
+  add_foreign_key "sales_orders", "users"
+  add_foreign_key "store_credits", "users"
   add_foreign_key "warehouses", "ubigeos"
 end

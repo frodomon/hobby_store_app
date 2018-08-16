@@ -122,4 +122,33 @@ module ApplicationHelper
     end
   end
   
+  def is_active_store_credit()
+    controller_name = params[:controller]
+    case controller_name
+      when 'store_credits'
+        'active'
+      else
+        nil
+    end
+  end
+
+  def is_active_compras()
+    controller_name = params[:controller]
+    case controller_name
+    when 'purchase_orders'
+      'active'
+    else
+      nil
+    end
+  end
+  def is_active_ventas()
+    controller_name = params[:controller]
+    case controller_name
+    when 'sales_orders'
+      'active'
+    else
+      nil
+    end
+  end
+
 end

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sales_order.user %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @sales_order.client %>
+</p>
+
+<p>
+  <strong>Order date:</strong>
+  <%= @sales_order.order_date %>
+</p>
+
+<p>
+  <strong>Delivery date:</strong>
+  <%= @sales_order.delivery_date %>
+</p>
+
+<p>
+  <strong>Delivery method:</strong>
+  <%= @sales_order.delivery_method %>
+</p>
+
+<p>
+  <strong>Delivery cost:</strong>
+  <%= @sales_order.delivery_cost %>
+</p>
+
+<p>
+  <strong>Discount coupon:</strong>
+  <%= @sales_order.discount_coupon %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @sales_order.ammount %>
+</p>
+
+<p>
+  <strong>Delivery address:</strong>
+  <%= @sales_order.delivery_address %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sales_order.status %>
+</p>
+
+<%= link_to 'Edit', edit_sales_order_path(@sales_order) %> |
+<%= link_to 'Back', sales_orders_path %>

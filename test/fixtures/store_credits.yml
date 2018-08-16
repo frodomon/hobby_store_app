@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  ammount: 1.5
+  detail: MyString
+  credit_date: 2018-08-16
+
+two:
+  user: two
+  ammount: 1.5
+  detail: MyString
+  credit_date: 2018-08-16

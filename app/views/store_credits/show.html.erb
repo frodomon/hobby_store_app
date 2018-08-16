@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @store_credit.user %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @store_credit.ammount %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @store_credit.detail %>
+</p>
+
+<p>
+  <strong>Credit date:</strong>
+  <%= @store_credit.credit_date %>
+</p>
+
+<%= link_to 'Edit', edit_store_credit_path(@store_credit) %> |
+<%= link_to 'Back', store_credits_path %>
