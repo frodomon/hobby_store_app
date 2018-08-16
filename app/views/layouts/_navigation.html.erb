@@ -238,6 +238,9 @@
         <li class="<%= is_active_controller('suppliers') %>">
           <%= link_to 'Proveedores', suppliers_path %>
         </li>
+        <li class="<%= is_active_controller('delivery_methods') %>">
+          <%= link_to 'Métodos de Ënvio', delivery_methods_path %>
+        </li>
       </ul>      
     </li> 
     </li>
@@ -291,14 +294,23 @@
     </li>
 
     <li class="<%= is_active_compras() %>">
-        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_compras() %>">
-          <li class="<%= is_active_controller('purchase_orders') %>">
-            <%= link_to 'Órdenes de Compra', purchase_orders_path %>
+      <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level collapse <%= is_active_compras() %>">
+        <li class="<%= is_active_controller('purchase_orders') %>">
+          <%= link_to 'Órdenes de Compra', purchase_orders_path %>
+        </li>
+      </ul>
+    </li>
+
+    <li class="<%= is_active_ventas() %>">
+        <a href="#"><i class="fa fa-calculator"></i> <span class="nav-label">Ventas</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= is_active_ventas() %>">
+          <li class="<%= is_active_controller('sales_orders') %>">
+            <%= link_to 'Órdenes de Venta', sales_orders_path %>
           </li>
         </ul>
       </li>
-    
+
     <li>
       <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label" data-i18n="nav.menulevels">Menu Levels </span><span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">
