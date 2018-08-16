@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_041828) do
+ActiveRecord::Schema.define(version: 2018_08_16_191739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2018_08_12_041828) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "quantity"
+    t.date "registration_date"
+    t.date "release_date"
+    t.bigint "warehouse_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_inventories_on_product_id"
+    t.index ["warehouse_id"], name: "index_inventories_on_warehouse_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -195,4 +207,22 @@ ActiveRecord::Schema.define(version: 2018_08_12_041828) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "warehouses", force: :cascade do |t|
+    t.string "shortname"
+    t.string "house_type"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "departamento"
+    t.string "provincia"
+    t.string "distrito"
+    t.bigint "ubigeo_id"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ubigeo_id"], name: "index_warehouses_on_ubigeo_id"
+  end
+
+  add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "warehouses"
+  add_foreign_key "warehouses", "ubigeos"
 end

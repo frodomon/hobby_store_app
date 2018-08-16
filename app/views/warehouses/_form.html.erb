@@ -1,0 +1,62 @@
+<%= form_with(model: warehouse, local: true) do |form| %>
+  <% if warehouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+
+      <ul>
+      <% warehouse.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :shortname %>
+    <%= form.text_field :shortname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :house_type %>
+    <%= form.text_field :house_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_line1 %>
+    <%= form.text_field :address_line1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_line2 %>
+    <%= form.text_field :address_line2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departamento %>
+    <%= form.text_field :departamento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :provincia %>
+    <%= form.text_field :provincia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distrito %>
+    <%= form.text_field :distrito %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ubigeo_id %>
+    <%= form.text_field :ubigeo_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postal_code %>
+    <%= form.text_field :postal_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

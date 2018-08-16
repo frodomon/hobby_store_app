@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :inventories
+  resources :warehouses
   resources :products
   resources :game_lines
   resources :suggested_ages

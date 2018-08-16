@@ -1,3 +1,4 @@
 class Ubigeo < ApplicationRecord
-	belongs_to :address, inverse_of: :ubigeo
+	has_one :address, inverse_of: :ubigeo
+	has_one :warehouse, inverse_of: :ubigeo
 end

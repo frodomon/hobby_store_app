@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shortname:</strong>
+  <%= @warehouse.shortname %>
+</p>
+
+<p>
+  <strong>House type:</strong>
+  <%= @warehouse.house_type %>
+</p>
+
+<p>
+  <strong>Address line1:</strong>
+  <%= @warehouse.address_line1 %>
+</p>
+
+<p>
+  <strong>Address line2:</strong>
+  <%= @warehouse.address_line2 %>
+</p>
+
+<p>
+  <strong>Departamento:</strong>
+  <%= @warehouse.departamento %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @warehouse.provincia %>
+</p>
+
+<p>
+  <strong>Distrito:</strong>
+  <%= @warehouse.distrito %>
+</p>
+
+<p>
+  <strong>Ubigeo:</strong>
+  <%= @warehouse.ubigeo %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @warehouse.postal_code %>
+</p>
+
+<%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
+<%= link_to 'Back', warehouses_path %>

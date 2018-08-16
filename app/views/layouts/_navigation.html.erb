@@ -229,6 +229,12 @@
     <li class="<%= is_active_mantenimiento() %>">
       <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
       <ul class="nav nav-second-level collapse <%= is_active_mantenimiento() %>">
+        <li class="<%= is_active_controller('ubigeos') %>">
+          <%= link_to 'Ubigeos', ubigeos_path %>
+        </li>
+        <li class="<%= is_active_controller('warehouses') %>">
+          <%= link_to 'Almacenes', warehouses_path %>
+        </li>
       </ul>      
     </li> 
     </li>
@@ -259,6 +265,14 @@
         <li class="<%= is_active_controller('game_lines') %>">
           <%= link_to 'Lineas de Juego', game_lines_path %>
         </li>      
+      </ul>
+    </li>
+    <li class="<%= is_active_inventory_mgmt() %>">
+      <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Gestión de Inventarios</span><span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level collapse <%= is_active_inventory_mgmt() %>">
+        <li class="<%= is_active_controller('inventories') %>">
+          <%= link_to 'Inventario', inventories_path %>
+        </li>
       </ul>
     </li>
 

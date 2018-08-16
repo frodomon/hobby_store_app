@@ -111,5 +111,15 @@ module ApplicationHelper
         nil
     end
   end
+
+  def is_active_inventory_mgmt()
+    controller_name = params[:controller]
+    case controller_name
+      when 'inventories'
+        'active'
+      else
+        nil
+    end
+  end
   
 end
