@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
 
   create_table "purchase_orders", force: :cascade do |t|
     t.bigint "supplier_id"
+    t.string "order_number"
     t.date "order_date"
     t.date "delivery_date"
     t.bigint "user_id"
@@ -307,6 +308,11 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
 
   add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "warehouses"
+  add_foreign_key "products", "game_lines"
+  add_foreign_key "products", "game_styles"
+  add_foreign_key "products", "game_types"
+  add_foreign_key "products", "suggested_ages"
+  add_foreign_key "products", "thematics"
   add_foreign_key "purchase_order_details", "products"
   add_foreign_key "purchase_order_details", "purchase_orders"
   add_foreign_key "purchase_orders", "suppliers"

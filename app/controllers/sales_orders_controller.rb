@@ -10,21 +10,28 @@ class SalesOrdersController < ApplicationController
   # GET /sales_orders/1
   # GET /sales_orders/1.json
   def show
+    @sales_order_details = @sales_order.sales_order_details
   end
 
   # GET /sales_orders/new
   def new
     @sales_order = SalesOrder.new
+    @sales_order.sales_order_details.build
+    @products = Product.all
+    @today = Time.now.strftime("%Y-%m-%d")
   end
 
   # GET /sales_orders/1/edit
   def edit
+    @products = Product.all
   end
 
   # POST /sales_orders
   # POST /sales_orders.json
   def create
     @sales_order = SalesOrder.new(sales_order_params)
+    @sales_order.order_date = Time.now
+    @sales_order.user_id = current_user.id
 
     respond_to do |format|
       if @sales_order.save
@@ -69,6 +76,7 @@ class SalesOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sales_order_params
-      params.require(:sales_order).permit(:user_id, :client, :order_date, :delivery_date, :delivery_method_id, :delivery_cost, :discount_coupon, :ammount, :delivery_address, :status)
+      params.require(:sales_order).permit(:user_id, :client, :order_date, :delivery_date, :delivery_method_id, :delivery_cost, :discount_coupon, :ammount, :delivery_address, :status,
+        sales_order_details_attributes: [:id, :sales_order_id, :product_id, :quantity, :unit_price, :subtotal, :_destroy])
     end
 end

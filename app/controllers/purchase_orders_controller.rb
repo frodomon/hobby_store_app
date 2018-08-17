@@ -10,21 +10,30 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders/1
   # GET /purchase_orders/1.json
   def show
+    @purchase_order_details = @purchase_order.purchase_order_details
   end
 
   # GET /purchase_orders/new
   def new
     @purchase_order = PurchaseOrder.new
+    @purchase_order.purchase_order_details.build
+    @suppliers = Supplier.all
+    @products = Product.all
+    @today = Time.now.strftime("%Y-%m-%d")
   end
 
   # GET /purchase_orders/1/edit
   def edit
+    @products = Product.all
+    @suppliers = Supplier.all
   end
 
   # POST /purchase_orders
   # POST /purchase_orders.json
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
+    @purchase_order.order_date = Time.now
+    @purchase_order.user_id = current_user.id
 
     respond_to do |format|
       if @purchase_order.save
@@ -69,6 +78,9 @@ class PurchaseOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:supplier_id, :order_date, :delivery_date, :user_id, :ammount, :registered)
+      params.require(:purchase_order).permit(:supplier_id, :order_number, :order_date, :delivery_date, :user_id, :ammount, :registered,
+        purchase_order_details_attributes: [:id, :purchase_order_id, :product_id, :quantity, :unit_price, :subtotal, :_destroy])
     end
 end
+
+

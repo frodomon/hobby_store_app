@@ -1,5 +1,33 @@
-<h1>New Purchase Order</h1>
-
-<%= render 'form', purchase_order: @purchase_order %>
-
-<%= link_to 'Back', purchase_orders_path %>
+<% provide(:title, "Propebis | Nueva Orden de Compra") %>
+<div class="row wrapper border-bottom white-bg page-heading breadcrumbs-margin">
+  <div class="col-lg-12">
+    <h2>Nueva Orden de Compra</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= url_for :controller => 'static_pages', :action => 'home' %>">Inicio</a>
+      </li>
+      <li>
+        <a href="<%= url_for :controller => 'purchase_orders', :action => 'index' %>">Órdenes de Compra</a>
+      </li>
+      <li class="active">
+        <strong>Nueva Orden de Compra</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight no-padding">
+  <%= render 'shared/notifications' %>
+  <div class="row breadcrumbs-margin">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h3>Nueva Orden de Compra</h3>
+        </div>
+        <div class="ibox-content">
+          <%= render 'form' %>
+          <%= button_to 'Volver', { action: 'index'}, method: :get, class: 'btn btn-w-m btn-info' %>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

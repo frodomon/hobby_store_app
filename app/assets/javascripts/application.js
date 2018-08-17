@@ -20,3 +20,9 @@
 //= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require inspinia.js
+//= require iCheck/icheck.min.js
+//= require datapicker/bootstrap-datepicker.js
+//= require add_remove_fields
+//= require fill_blank_fields
+//= require datatables
+//= require uiux

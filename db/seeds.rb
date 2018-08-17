@@ -6,10 +6,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# User.create(title: 'Sr.', name:'Alfredo', last_name: 'Vasquez', username: 'Dohko', genre: 'M', doi:'43187750', email:'vasquez.alf@gmail.com', telephone: '5661896', mobile:'938822802', password: 'argosbuffy', password_confirmation: 'argosbuffy', roles_mask: 0)
+# User.create(title: 'Sr.', name:'Alfredo', last_name: 'Vasquez', username: 'Dohko', genre: 'M', doi:'43187750', email:'vasquez.alf@gmail.com', telephone: '5661896', mobile:'938822802', confirmed_at: DateTime.now, password: 'argosbuffy', password_confirmation: 'argosbuffy', roles_mask: 0)
 
+#SECCION UBIGEO
 Ubigeo.create(ug_id: 1, name:'Amazonas', parent_id: nil)
-
 Ubigeo.create(ug_id: 2, name:"Ancash", parent_id: nil)
 Ubigeo.create(ug_id: 3, name:"Apurimac", parent_id: nil)
 Ubigeo.create(ug_id: 4, name:"Arequipa", parent_id: nil)
@@ -2063,3 +2063,27 @@ Ubigeo.create(ug_id: 250301, name:"Padre Abad", parent_id: 2503)
 Ubigeo.create(ug_id: 250302, name:"Irazola", parent_id: 2503)
 Ubigeo.create(ug_id: 250303, name:"Curimana", parent_id: 2503)
 Ubigeo.create(ug_id: 250401, name:"Purus", parent_id: 2504)
+
+#SECCION MANTENIMIENTOS
+Warehouse.create(shortname:"Tienda", house_type:"Casa", address_line1: "Av. Mariano Cornejo 2286", address_line2:"Cercado de Lima, Lima", departamento:"Lima", provincia: "Lima", distrito: "Cercado de Lima", ubigeo_id: 1469, postal_code: 150101)
+Warehouse.create(shortname:"Alfredo", house_type:"Casa", address_line1: "Calle Ventura Ccallamaqui 166", address_line2:"Urb. Pando 2da Etapa, San Miguel , Lima", departamento:"Lima", provincia: "Lima", distrito: "San Miguel", ubigeo_id: 1504, postal_code: 150136)
+Supplier.create(name:"JVLAT", contact:"Ricardo Puente de la Barrera")
+Supplier.create(name:"COQUI", contact:"Rafael Rivera")
+Supplier.create(name:"DEVIR", contact:"Tomás Jasso")
+DeliveryMethod.create(name: "Glovo")
+DeliveryMethod.create(name: "Recojo en Tienda")
+tcg = Category.create(name: "Juegos de Cartas")
+Category.create(name: "Juegos de Tablero")
+Category.create(name: "Juegos de Rol")
+mtg = SubCategory.create(name: "Magic the Gathering", category_id: tcg)
+SubCategory.create(name: "Pokémon", category_id: tcg)
+GameType.create(name:"Estrategia")
+GameStyle.create(name:"Competitivo")
+GameStyle.create(name:"Colaborativo")
+Thematic.create(name:"Medieval")
+Thematic.create(name:"Fántastico")
+SuggestedAge.create(name:"13+")
+GameLine.create(name:"Game of Thrones")
+GameLine.create(name:"Magic the Gathering")
+
+Product.create(name:"Bundle Core Set 2019", category_id: tcg, sub_category_id: mtg, full_price: 180.00, presale_price:150.00)

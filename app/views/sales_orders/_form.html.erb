@@ -1,67 +1,103 @@
-<%= form_with(model: sales_order, local: true) do |form| %>
-  <% if sales_order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sales_order.errors.count, "error") %> prohibited this sales_order from being saved:</h2>
+<%= form_for @sales_order, html: { multipart: true, id: "submit-form"  } do |f| %>
+  <%= form_errors_for @sales_order %>
+  <% nombre = current_user.name + ' ' + current_user.last_name %>
 
-      <ul>
-      <% sales_order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class= "<%= field_class(@sales_order, :user_id) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :user_id, 'Registrador', class: 'control-label' %>
+      <%= f.text_field :user_id, placeholder: nombre, class: 'form-control', readonly: true %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <div class= "<%= field_class(@sales_order, :client) %> col-lg-6 col-md-6 col-sm-6">
+    <%= f.label :client, 'Cliente', class: 'control-label' %>
+    <%= f.text_field :client, class: 'form-control' %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :client %>
-    <%= form.text_field :client %>
+  <div class="row">
+
+    <div class= "<%= field_class(@sales_order, :order_date) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :date, 'Fecha de la Orden', class: 'control-label' %>
+      <div class="input-group date">
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <%= f.text_field :order_date, placeholder: @today, class: 'form-control', readonly: true %>
+      </div>
+    </div>
+    <div class= "<%= field_class(@sales_order, :delivery_date) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :delivery_date, 'Fecha de Entrega', class: 'control-label' %>
+      <div class="input-group date">
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <%= f.text_field :delivery_date, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :order_date %>
-    <%= form.date_field :order_date %>
+  
+
+  <div class="row">
+    <div class= "<%= field_class(@sales_order, :delivery_method_id) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :delivery_method_id, 'Método de Envio', class: 'control-label' %>
+      <%= f.collection_select :delivery_method_id, DeliveryMethod.order(:name), :id, :name, options = { prompt: 'Seleccione un Método de Envio'}, html_options = { class: 'select2_demo_1 form-control', autofocus: true  } %>
+    </div>
+    <div class= "<%= field_class(@sales_order, :delivery_cost) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :delivery_cost, 'Costo de Envio', class: 'control-label' %>
+      <%= f.text_field :delivery_cost, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@sales_order, :discount_coupon) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :discount_coupon, 'Método de Envio', class: 'control-label' %>
+      <%= f.text_field :discount_coupon, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :delivery_date %>
-    <%= form.date_field :delivery_date %>
+  <div class="row">
+    <div class="field">
+      <%= f.label :ammount, 'Monto Final', class: 'control-label'  %>
+      <%= f.text_field :ammount, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :delivery_method_id %>
-    <%= form.text_field :delivery_method_id %>
+  <div class="row">
+    <div class="field">
+      <%= f.label :delivery_address, 'Dirección de Envío', class: 'control-label' %>
+      <%= f.text_field :delivery_address, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :delivery_cost %>
-    <%= form.text_field :delivery_cost %>
+  <div class="row">
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.check_box :status %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :discount_coupon %>
-    <%= form.text_field :discount_coupon %>
+  <div class="row">
+    <h3>Productos</h3>
+    <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <table class="footable table table-stripped">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>P. Unit</th>
+            <th>Subtotal</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :sales_order_details do |builder| %>
+            <%= render 'sales_order_detail_fields', f: builder %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class= 'details'>
+        <%= link_to_add_row_fields "Añadir Producto", f, :sales_order_details %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :ammount %>
-    <%= form.text_field :ammount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivery_address %>
-    <%= form.text_field :delivery_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
