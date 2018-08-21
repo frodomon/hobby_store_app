@@ -59,96 +59,106 @@ module ApplicationHelper
     end
   end
 
-  def is_active_controller(controller_name, class_name = nil)
-    if params[:controller] == controller_name
-     class_name == nil ? "active" : "active " + class_name
-    else
-       nil
-    end
+  def is_active_controller(controller_name)
+    params[:controller] == controller_name ? "active" : nil
   end
 
   def is_active_action(action_name)
     params[:action] == action_name ? "active" : nil
   end
 
-  def is_active_mantenimiento()
+  def activation(class_name)
+    if class_name == nil 
+      clase = "active"
+    else
+      clase = "active " + class_name
+    end
+  end
+
+  def is_active_mantenimiento(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'ubigeos'
-        'active'
+        clase
       when 'suppliers'
-        'active'
+        clase
       when 'warehouses'
-        'active'
+        clase
       when 'delivery_methods'
-        'active'
+        clase
       when 'payment_methods'
-        'active'
+        clase
       when 'delivery_hours'
-        'active'
+        clase
       else
         nil
     end
   end
 
-  def is_active_product_line()
+  def is_active_product_line(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'products'
-        'active'
+        clase
       when 'categories'
-        'active'
+        clase
       when 'sub_categories'
-        'active'
+        clase
       when 'game_types'
-        'active'
+        clase
       when 'game_styles'
-        'active'
+        clase
       when 'thematics'
-        'active'
+        clase
       when 'suggested_ages'
-        'active'
+        clase
       when 'game_lines'
-        'active'
+        clase
       else
         nil
     end
   end
 
-  def is_active_inventory_mgmt()
+  def is_active_inventory_mgmt(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'inventories'
-        'active'
+        clase
       else
         nil
     end
   end
   
-  def is_active_store_credit()
+  def is_active_store_credit(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'store_credits'
-        'active'
+        clase
       else
         nil
     end
   end
 
-  def is_active_compras()
+  def is_active_compras(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'purchase_orders'
-        'active'
+        clase
       else
         nil
     end
   end
-  def is_active_ventas()
+  def is_active_ventas(class_name)
+    clase = activation(class_name)
     controller_name = params[:controller]
     case controller_name
       when 'sales_orders'
-        'active'
+        clase
       else
         nil
     end
