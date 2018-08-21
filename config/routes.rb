@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :delivery_hours
+  resources :payment_methods
   resources :sales_order_details
   resources :sales_orders
   resources :delivery_methods

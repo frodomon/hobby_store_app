@@ -1,0 +1,2 @@
+class DeliveryHour < ApplicationRecord
+end

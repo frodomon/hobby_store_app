@@ -3,13 +3,13 @@
 class User::SessionsController < Devise::SessionsController
   include Devise::Controllers::Helpers
   # before_action :configure_sign_in_params, only: [:create]
+  layout 'login'
 
   # GET /resource/sign_in
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     yield resource if block_given?
-    render layout: 'empty'
   end
 
   # POST /resource/sign_in

@@ -1,14 +1,14 @@
-<% provide(:title, "El Tablero de Otto | Métodos de Envío") %>
+<% provide(:title, "El Tablero de Otto | Métodos de Pago") %>
 
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-12">
-    <h2>Métodos de Envío</h2>
+    <h2>Métodos de Pago</h2>
     <ol class="breadcrumb">
       <li>
         <a href="<%= url_for :controller => 'static_pages', :action => 'home' %>">Inicio</a>
       </li>
       <li class="active">
-        <strong>Métodos de Envío</strong>
+        <strong>Métodos de Pago</strong>
       </li>
     </ol>
   </div>
@@ -20,10 +20,10 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Métodos de Envío</h5>
+          <h5>Métodos de Pago</h5>
         </div>
         <div class="ibox-content">
-          <%= button_to 'Nuevo Método de Envío', { action: 'new'}, method: :get, class: 'btn btn-w-m btn-primary' %>
+          <%= button_to 'Nuevo Método de Pago', { action: 'new'}, method: :get, class: 'btn btn-w-m btn-primary' %>
           <div class='table-responsive'>
             <table class="table table-stripped table-bordered table-hover datatable">
               <thead>
@@ -35,12 +35,12 @@
                 </tr>
               </thead>
               <tbody>
-                <% @delivery_methods.each do |delivery_method| %>
+                <% @payment_methods.each do |payment_method| %>
                   <tr>
-                    <td align="center"><%= delivery_method.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: delivery_method.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
-                    <td align="center"><%= link_to 'Editar', { action: 'edit', id: delivery_method.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
-                    <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: delivery_method.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
+                    <td align="center"><%= payment_method.name %></td>
+                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: payment_method.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
+                    <td align="center"><%= link_to 'Editar', { action: 'edit', id: payment_method.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
+                    <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: payment_method.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>
                 <% end %>
               </tbody>
@@ -57,7 +57,8 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(function() {
-      load_table_controls('datatable','Métodos de Envío');
+      load_table_controls('datatable','Métodos de Pago');
     });
   </script>
 <% end %>
+<%= link_to 'New Payment Method', new_payment_method_path %>

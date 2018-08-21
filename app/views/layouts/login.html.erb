@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>El Tablero de Otto</title>
+  <!-- Main css styles -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Main javascript files -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+</head>
+<body class="login-bg centered-form-flex">
+  <div class="login-box animated fadeInDown">
+    <div>
+      <div class="logo-landing-container">
+        <img class="logo-landing" src="<%= image_url 'Logo Otto fondo transparente.png' %>" alt="El Tablero de Otto">
+      </div>
+        <p class="login-text">Si estas leyendo esto es porque eres megasapazo y pitazo</p>
+        <p class="login-text">Login in. To see it in action.</p>
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= yield :javascript %>
+
+</body>
+
+</html>

@@ -1,4 +1,50 @@
+.centered-form-flex{
+	display: flex;
+	flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  align-content:center;
+}
+.centered-form-flex-row{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content:center; 
+}
+.centered-form-flex-sb{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content:center; 
+}
 .img-profilepic{
 	width:100%;
 	display:block;
+}
+.login-bg{
+	width:100%;
+  background: url(landing.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.login-box{
+	width:25%;
+	text-align: center;
+	background-color: rgba(0,0,0,0.7);
+	padding: 1rem 5rem; 
+	border-radius: 1rem;
+}
+.login-text{
+	color:#FFFFFF;
+}
+.logo-landing-container{
+	padding: 2rem 0;
+}
+.logo-landing{
+  width: 100%;
+  display: block;
 }

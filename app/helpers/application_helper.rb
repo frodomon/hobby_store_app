@@ -1,7 +1,4 @@
 module ApplicationHelper
-
-  
-
 	#Visualizar Booleans
 	def human_boolean(boolean)
     boolean ? 'Si' : 'No'
@@ -62,8 +59,12 @@ module ApplicationHelper
     end
   end
 
-  def is_active_controller(controller_name)
-    params[:controller] == controller_name ? "active" : nil
+  def is_active_controller(controller_name, class_name = nil)
+    if params[:controller] == controller_name
+     class_name == nil ? "active" : "active " + class_name
+    else
+       nil
+    end
   end
 
   def is_active_action(action_name)
@@ -73,15 +74,17 @@ module ApplicationHelper
   def is_active_mantenimiento()
     controller_name = params[:controller]
     case controller_name
-      when 'businesses'
+      when 'ubigeos'
         'active'
       when 'suppliers'
         'active'
-      when 'clients'
+      when 'warehouses'
         'active'
-      when 'vehicles'
+      when 'delivery_methods'
         'active'
-      when 'drivers'
+      when 'payment_methods'
+        'active'
+      when 'delivery_hours'
         'active'
       else
         nil
@@ -135,19 +138,19 @@ module ApplicationHelper
   def is_active_compras()
     controller_name = params[:controller]
     case controller_name
-    when 'purchase_orders'
-      'active'
-    else
-      nil
+      when 'purchase_orders'
+        'active'
+      else
+        nil
     end
   end
   def is_active_ventas()
     controller_name = params[:controller]
     case controller_name
-    when 'sales_orders'
-      'active'
-    else
-      nil
+      when 'sales_orders'
+        'active'
+      else
+        nil
     end
   end
 

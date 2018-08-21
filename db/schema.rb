@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "delivery_hours", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "delivery_methods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -72,6 +78,12 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_inventories_on_product_id"
     t.index ["warehouse_id"], name: "index_inventories_on_warehouse_id"
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -171,17 +183,23 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
   create_table "sales_orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "client"
+    t.string "order_number"
     t.date "order_date"
     t.date "delivery_date"
+    t.bigint "delivery_hour_id"
     t.bigint "delivery_method_id"
     t.float "delivery_cost"
     t.string "discount_coupon"
     t.float "ammount"
-    t.string "delivery_address"
+    t.string "delivery_address_line1"
+    t.string "delivery_address_line2"
+    t.bigint "payment_method_id"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["delivery_hour_id"], name: "index_sales_orders_on_delivery_hour_id"
     t.index ["delivery_method_id"], name: "index_sales_orders_on_delivery_method_id"
+    t.index ["payment_method_id"], name: "index_sales_orders_on_payment_method_id"
     t.index ["user_id"], name: "index_sales_orders_on_user_id"
   end
 
@@ -319,7 +337,9 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
   add_foreign_key "purchase_orders", "users"
   add_foreign_key "sales_order_details", "products"
   add_foreign_key "sales_order_details", "sales_orders"
+  add_foreign_key "sales_orders", "delivery_hours"
   add_foreign_key "sales_orders", "delivery_methods"
+  add_foreign_key "sales_orders", "payment_methods"
   add_foreign_key "sales_orders", "users"
   add_foreign_key "store_credits", "users"
   add_foreign_key "warehouses", "ubigeos"
