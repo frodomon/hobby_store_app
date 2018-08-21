@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_224130) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
+    t.string "short_name"
     t.string "barcode"
     t.string "sku"
     t.bigint "category_id"

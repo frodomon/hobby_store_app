@@ -2,6 +2,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
       t.string :name
+      t.string :short_name
       t.string :barcode
       t.string :sku
       t.references :category, index: true

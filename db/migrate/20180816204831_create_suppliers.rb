@@ -8,7 +8,7 @@ class CreateSuppliers < ActiveRecord::Migration[5.2]
       t.string :contact
       t.string :contact_mobile
       t.string :contact_email
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps
     end
