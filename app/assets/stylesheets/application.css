@@ -15,5 +15,6 @@
  *= require style
  *= require ui
  *= require font-awesome
+ *= require jasny/jasny-bootstrap.min.css
  *= require_self
  */

@@ -4,9 +4,8 @@
       <li class="nav-header">
         <div class="dropdown profile-element">
           <div style="width:100%">
-            <% if current_user.avatar %>
-                <%= image_tag(current_user.avatar_url.to_s, class: 'img-circle img-profilepic') %>
-            <% else %>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag(current_user.avatar, class: 'img-circle img-profilepic') %>            <% else %>
               <img alt="image" class="img-circle" src="<%= image_url 'profile_small.jpg' %>"/>
             <% end %>
           </div>

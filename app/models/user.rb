@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :username
   validates_presence_of :email
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address, allow_destroy: true
   validates_associated :address
