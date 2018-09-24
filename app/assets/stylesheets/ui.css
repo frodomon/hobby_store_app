@@ -51,7 +51,8 @@
   width: 100%;
   display: block;
 }
-/*-------------SIGN UP0-----------------------------*/
+/*-------------SIGN UP-----------------------------*/
+
 .signup-bg{
   width:100%;
   height: auto;
@@ -67,7 +68,7 @@
   width:40%;
   margin: 0 30%;
   text-align: center;
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.9);
   padding: 2rem 2.5%; 
   border-radius: 1rem;
 }
@@ -77,4 +78,7 @@
 }
 .file-input input{
   color:red;
+}
+.inline-checkbox{
+  display:inline-block;
 }

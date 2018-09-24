@@ -1,131 +1,229 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true, id: "submit-form" }) do |f| %>
   <%= devise_error_messages! %>
 
   <% if can? :manage, User %>
     <div class="roles">
-      <% for role in User::ROLES %>
-        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-        <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-      <% end %>
-      <%= hidden_field_tag "user[roles][]", "" %>
+      <div class="row">
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h2 class="section-title">Rol de Acceso</h2>
+            <% for role in User::ROLES %>
+              <label class="inline-checkbox i-checks"> 
+                <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= role.to_s.humanize %>
+              </label>
+            <% end %>
+            <%= hidden_field_tag "user[roles][]", "" %>  
+        </div>
+      </div>  
     </div>
   <% end %>
 
   <div class="personal_info">
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
+    <div class="row">
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h2 class="section-title">Información Personal</h2>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :name, "Nombres", class: 'control-label' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :last_name, "Apellidos", class: 'control-label' %>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :genre, "Género" %><br />
+        <label class="inline-checkbox i-checks"> 
+          <%= f.radio_button :genre, true %>
+          Masculino
+        </label>
+        <label class="inline-checkbox i-checks"> 
+          <%= f.radio_button :genre, false %>
+          Femenino
+        </label>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :birthdate, 'Fecha', class: 'control-label' %>
+        <div class="input-group date">
+          <span class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </span>
+          <%= f.text_field :birthdate, placeholder: @today, class: 'form-control' %>
+        </div>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
-      <%= f.label :doi %><br />
-      <%= f.text_field :doi %>
-    </div>
-    <div class="field">
-      <%= f.file_field :avatar %>
-    </div>
-    <div class="field">
-      <%= f.label :genre %><br />
-      <%= f.text_field :genre %>
-    </div>
-    <div class="field">
-      <%= f.label :birthdate %><br />
-      <%= f.date_field :birthdate %>
-    </div>
-    <div class="field">
-      <%= f.label :mobile %><br />
-      <%= f.number_field :mobile %>
-    </div>
-    <div class="field">
-      <%= f.label :business_name %><br />
-      <%= f.text_field :business_name %>
-    </div>
-    <div class="field">
-      <%= f.label :ruc %><br />
-      <%= f.number_field :ruc %>
-    </div>
-    <div class="field">
-      <%= f.label :workcenter %><br />
-      <%= f.text_field :workcenter %>
-    </div>
-    <div class="field">
-      <%= f.label :telephone %><br />
-      <%= f.number_field :telephone %>
-    </div>
-  </div>
-  <div class="game_info">
-    <div class="field">
-      <%= f.label :mtg_id %><br />
-      <%= f.text_field :mtg_id %>
-    </div>
-    <div class="field">
-      <%= f.label :pkm_id %><br />
-      <%= f.text_field :pkm_id %>
-    </div>
-    <div class="field">
-      <%= f.label :ygo_id %><br />
-      <%= f.text_field :ygo_id %>
-    </div>
-    <div class="field">
-      <%= f.label :bloobie_id %><br />
-      <%= f.text_field :bloobie_id %>
-    </div>
-    <div class="field">
-      <%= f.label :dbsuper_id %><br />
-      <%= f.text_field :dbsuper_id %>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :doi, "DNI", class: 'control-label' %>
+        <%= f.text_field :doi, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :avatar, "Avatar", class: 'control-label' %>
+        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+          <div class="form-control" data-trigger="fileinput">
+            <i class="glyphicon glyphicon-file fileinput-exists"></i>
+            <span class="fileinput-filename">
+              <% if f.object.avatar.attached? %>
+                <%= f.object.avatar.filename %>
+              <% end %>
+            </span>
+          </div>
+          <span class="input-group-addon btn btn-default btn-file">
+            <a href="" id="file-btn" class="fileinput-new">Seleccionar Archivo</a>
+            <a href="" id="file-btn" class="fileinput-exists">Cambiar</a>
+            <%= f.file_field :avatar, title: "Please choose file", id: "file-picker", class: "" %>
+          </span>
+          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+        </div>
+        
+      </div>
     </div>
 
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :telephone, "Télefono Fijo", class: 'control-label' %>
+        <%= f.telephone_field :telephone, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :mobile, "Télefono Móvil", class: 'control-label' %>
+        <%= f.telephone_field :mobile, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :workcenter, "Centro de Trabajo", class: "control-label" %>
+        <%= f.text_field :workcenter,class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      </div>
+    </div>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="address_info">
+    <div class="row">
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h2 class="section-title">Dirección</h2>
+      </div>
+    </div> 
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <%= f.fields_for :address do |builder| %>
+      <%= render 'address_fields', f: builder %>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="business_info">
+    <div class="row">
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h2 class="section-title">Información de tu Negocio</h2>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :business_name, "Razón Social",class: "control-label" %>
+        <%= f.text_field :business_name, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :ruc, "RUC", class: "control-label" %>
+        <%= f.text_field :ruc, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+    
+  <div class="hobby_info">
+    <div class="row">
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h2 class="section-title">Información de tus Hobbies</h2>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :mtg_id, "MTG DCI", class: "control-label" %>
+        <%= f.text_field :mtg_id, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :pkm_id, "Pokémon Player ID", class: "control-label" %>
+        <%= f.text_field :pkm_id, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :ygo_id, "Yu-gi-Oh! Player ID (KCGN)", class: "control-label" %>
+        <%= f.text_field :ygo_id, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :dbsuper_id, "Dragon Ball Super Player ID", class: "control-label" %>
+        <%= f.text_field :dbsuper_id, class: "form-control" %>
+      </div>
+      
+    </div>
+    <div class="row" style="display:none;">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :bloobie_id, "Bloobiemundo Player ID", class: "control-label" %>
+        <%= f.text_field :bloobie_id, class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="account_info">
+    <div class="row">
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h2 class="section-title">Información de la Cuenta</h2>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :email, "Correo Eléctronico", class: "control-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :username, "Nombre de Usuario",class: "control-label" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username",class: "form-control" %>
+      </div>
+    </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :password, "Contraseña", class: "control-label" %> <i>(leave blank if you don't want to change it)</i>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off",class: "form-control" %>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :password_confirmation, "Confirmación de contraseña", class: "control-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= f.label :current_password, class: "control-label" %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>    
+      </div>
+    </div>
   </div>
-
-  
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar",class: "btn btn btn-success" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn btn-default" %></p>
 
 <%= link_to "Back", :back %>
+
+<% content_for :javascript do %>
+   <%= javascript_include_tag 'user' %>
+<% end %>

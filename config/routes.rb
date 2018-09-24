@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     password: 'forgot_password'
   }
 
+  get '/ubigeo/get/departamentos(.:format)'=>"ubigeos#get_departamentos"
+  get '/ubigeo/get/provincias/:departamento(.:format)'=>"ubigeos#get_provincias"
+  get '/ubigeo/get/distritos/:provincia(.:format)'=>"ubigeos#get_distritos"
+  get '/ubigeo/get/ubigeo/:id(.:format)' =>"ubigeos#get_ubigeo"
+
+
   get'home', to: 'static_pages#home', as: :home
   root :to => 'static_pages#index'
 end

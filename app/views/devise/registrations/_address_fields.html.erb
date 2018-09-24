@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+  <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display:none;">
     <%= f.label :shortname, "Nombre Corto", class: "control-label" %>
     <%= f.text_field :shortname, class: "form-control" %>
   </div>  
-  <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+  <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display:none;">
     <%= f.label :house_type, "Tipo de Casa", class: "control-label" %>
     <%= f.text_field :house_type, class: "form-control" %>
   </div>
@@ -23,26 +23,32 @@
 <div class="row">
   <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= f.label :departamento, "Departamento", class: "control-label" %>
-    <%= f.text_field :departamento, class: "form-control" %>
+    <select id="departamento" class="form-select form-control">
+      <option value = "default" selected>Seleccione un Departamento</option>
+    </select>
+    <%= f.hidden_field :departamento, class: "form-control" %>
   </div>
   <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= f.label :provincia, "Provincia", class: "control-label" %>
-    <%= f.text_field :provincia, class: "form-control" %>
+    <select id="provincia" class="form-select form-control">
+      <option value = "default" selected>Seleccione una Provincia</option>
+    </select>
+    <%= f.hidden_field :provincia, class: "form-control" %>
   </div>
 </div>
 <div class="row">
   <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= f.label :distrito, "Distrito", class: "control-label" %>
-    <%= f.text_field :distrito, class: "form-control" %>
+    <select id="distrito" class="form-select form-control">
+      <option value = "default" selected>Seleccione un Distrito</option>
+    </select>
+    <%= f.hidden_field :distrito, class: "form-control" %>
   </div>
   <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= f.label :postal_code, "Código Postal", class: "control-label" %>
     <%= f.text_field :postal_code, class: "form-control" %>  
   </div>
 </div>
-  <div class="field">
-    <%= f.text_field :ubigeo_id %>
-  </div>
-
-  
-
+<div class="field">
+  <%= f.hidden_field :ubigeo_id %>
+</div>
