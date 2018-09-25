@@ -36,6 +36,7 @@
                   <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
+                  <th>Actualizar</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,6 +51,7 @@
                     <td align="center"><%= link_to 'Ver',{ action: 'show', id: purchase_order.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: purchase_order.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: purchase_order.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
+                    <td align="center"><%= link_to 'Áctualizar Inventario', { action: 'update_warehouse_from_purchase_order', id: purchase_order.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                   </tr>
                 <% end %>
               </tbody>

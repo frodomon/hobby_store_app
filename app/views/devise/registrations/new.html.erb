@@ -43,8 +43,15 @@
     </div>
     <div class="row">
       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <%= f.label :doi, "DNI", class: 'control-label' %>
-        <%= f.text_field :doi, class: "form-control" %>
+        <%= f.label :doi, "Documento de Identidad", class: 'control-label' %>
+        <div class="row">
+          <div class="form-group col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <%= f.collection_select :doi_type_id, DoiType.order(:short_name), :id, :short_name, options = { :prompt => '' }, class: "form-select form-control" %>
+          </div>
+          <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <%= f.text_field :doi, class: "form-control" %>
+          </div>
+        </div>
       </div>
       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <%= f.label :avatar, "Avatar", class: 'control-label' %>
@@ -193,5 +200,5 @@
 <%= render "devise/shared/links" %>
 
 <% content_for :javascript do %>
-   <%= javascript_include_tag 'user' %>
+   <%= javascript_include_tag 'new_user' %>
 <% end %>

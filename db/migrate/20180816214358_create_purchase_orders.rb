@@ -7,7 +7,7 @@ class CreatePurchaseOrders < ActiveRecord::Migration[5.2]
       t.date :delivery_date
       t.belongs_to :user, foreign_key: true
       t.float :ammount
-      t.boolean :registered
+      t.boolean :registered, default: false
 
       t.timestamps
     end

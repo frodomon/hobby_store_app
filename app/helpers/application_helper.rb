@@ -81,6 +81,8 @@ module ApplicationHelper
     case controller_name
       when 'ubigeos'
         clase
+      when 'doi_types'
+        clase
       when 'suppliers'
         clase
       when 'warehouses'

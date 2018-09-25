@@ -1,5 +1,5 @@
 class PurchaseOrdersController < ApplicationController
-  before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_purchase_order, only: [:show, :edit, :update, :destroy, :update_warehouse_from_purchase_order]
 
   # GET /purchase_orders
   # GET /purchase_orders.json
@@ -68,6 +68,25 @@ class PurchaseOrdersController < ApplicationController
       format.html { redirect_to purchase_orders_url, notice: 'Purchase order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def update_warehouse_from_purchase_order
+    pod_details = @purchase_order.purchase_order_details
+    today = Time.now
+    wid=2
+    
+    pod_details.each do |pod|
+      inv_params = Inventory.new
+      inv_params.product_id = pod.product_id
+      inv_params.quantity = pod.quantity
+      inv_params.registration_date = today
+      inv_params.release_date = today
+      inv_params.warehouse_id = wid
+      inv_params.save
+    end
+    redirect_to inventories_url
+    
   end
 
   private

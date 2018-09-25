@@ -17,5 +17,6 @@
  *= require font-awesome
  *= require jasny/jasny-bootstrap.min.css
  *= require iCheck/all.css
+ *= require datapicker/datepicker3.css
  *= require_self
  */

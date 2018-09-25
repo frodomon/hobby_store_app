@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :last_name
       t.string :genre
+      t.references :doi_type
       t.string :doi
       t.string :mobile
       t.string :telephone

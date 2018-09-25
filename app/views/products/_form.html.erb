@@ -1,19 +1,13 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @product, local: true, html: { id: "submit-form"  } do |form| %>
+  <%= form_errors_for @product %>
 
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :short_name %>
+    <%= form.text_field :short_name %>
   </div>
 
   <div class="field">

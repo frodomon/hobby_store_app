@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "doi_types", force: :cascade do |t|
+    t.string "name"
+    t.string "short_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "game_lines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -257,7 +264,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.string "contact"
     t.string "contact_mobile"
     t.string "contact_email"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -298,6 +305,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.string "name"
     t.string "last_name"
     t.string "genre"
+    t.bigint "doi_type_id"
     t.string "doi"
     t.string "mobile"
     t.string "telephone"
@@ -316,6 +324,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["doi"], name: "index_users_on_doi", unique: true
+    t.index ["doi_type_id"], name: "index_users_on_doi_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["ruc"], name: "index_users_on_ruc", unique: true

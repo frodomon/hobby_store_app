@@ -4,7 +4,7 @@ class InventoriesController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   def index
-    @inventories = Inventory.all
+    @inventories = Inventory.select("product_id, sum(quantity) as quantity").group("product_id")
   end
 
   # GET /inventories/1
@@ -59,6 +59,11 @@ class InventoriesController < ApplicationController
       format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def product_detail
+    product_id = params[:product_id]
+    @inventories = Inventory.where("product_id = ? and quantity > 0",product_id)
   end
 
   private

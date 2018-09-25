@@ -28,27 +28,21 @@
             <table class="table table-stripped table-bordered table-hover datatable">
               <thead>
                 <tr>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Fecha de Entrada</th>
-                  <th>Fecha de Lanzamiento</th>
-                  <th>Almacén</th>
-                  <th>Ver</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
+                  <th align='center'>Categoría</th>
+                  <th align='center'>Sub Categoría</th>
+                  <th align='center'>Producto</th>
+                  <th align='center'>Cantidad</th>
+                  <th align='center'>Detalle</th>
                 </tr>
               </thead>
               <tbody>
                 <% @inventories.each do |inventory| %>
                   <tr>
+                    <td align="center"><%= Category.find(Product.find(inventory.product_id).category_id).name %></td>
+                    <td align="center"><%= SubCategory.find(Product.find(inventory.product_id).sub_category_id).name %></td>
                     <td align="center"><%= Product.find(inventory.product_id).name %></td>
                     <td align="center"><%= inventory.quantity %></td>
-                    <td align="center"><%= inventory.registration_date %></td>
-                    <td align="center"><%= inventory.release_date %></td>
-                    <td align="center"><%= Warehouse.find(inventory.warehouse_id).shortname %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: inventory.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
-                    <td align="center"><%= link_to 'Editar', { action: 'edit', id: inventory.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
-                    <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: inventory.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
+                    <td align='center'><%= link_to "Ver Detalle", { action: "product_detail", product_id: inventory.product_id }, class: 'btn btn-w-m btn-success btn-xs' %></td>
                   </tr>
                 <% end %>
               </tbody>

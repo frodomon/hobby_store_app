@@ -1,0 +1,35 @@
+<table class="table table-stripped table-bordered table-hover datatable">
+  <thead>
+    <tr>
+      
+      <th align='center'>Producto</th>
+      <th align='center'>Cantidad</th>
+      <th align='center'>Fecha de Registro</th>
+      <th align='center'>Fecha de Lanzamiento</th>
+      <th align='center'>Almacén</th>
+      <th align='center'>Editar</th>
+      <th align='center'>Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventories.each do |inv| %>
+      <tr>
+        <td align="center"><%= Product.find(inv.product_id).name %></td>
+        <td align="center"><%= inv.quantity %></td>
+        <td align="center"><%= inv.registration_date %></td>
+        <td align="center"><%= inv.release_date %></td>
+        <td align="center"><%= Warehouse.find(inv.warehouse_id).shortname %></td>
+        <td align="center"><%= link_to 'Editar', { action: 'edit', id: inv.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
+        <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: inv.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function() {
+      load_table_controls('datatable','Detalle de Producto');
+    });
+  </script>
+<% end %>
