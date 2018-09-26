@@ -41,7 +41,7 @@
               <tbody>
                 <% @store_credits.each do |store_credit| %>
                   <tr>
-                    <td align="center"><%= store_credit.user %></td>
+                    <td align="center"><%= User.find(store_credit.user_id).name %></td>
                     <td align="center"><%= store_credit.ammount %></td>
                     <td align="center"><%= store_credit.detail %></td>
                     <td align="center"><%= store_credit.credit_date %></td>

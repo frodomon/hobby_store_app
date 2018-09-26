@@ -45,15 +45,15 @@
               <tbody>
                 <% @sales_orders.each do |sales_order| %>
                   <tr>
-                    <td align="center"><%= sales_order.user %></td>
+                    <td align="center"><%= User.find(sales_order.user_id).name %></td>
                     <td align="center"><%= sales_order.client %></td>
                     <td align="center"><%= sales_order.order_date %></td>
                     <td align="center"><%= sales_order.delivery_date %></td>
-                    <td align="center"><%= sales_order.delivery_method %></td>
+                    <td align="center"><%= DeliveryMethod.find(sales_order.delivery_method_id).name %></td>
                     <td align="center"><%= sales_order.delivery_cost %></td>
                     <td align="center"><%= sales_order.discount_coupon %></td>
                     <td align="center"><%= sales_order.ammount %></td>
-                    <td align="center"><%= sales_order.delivery_address %></td>
+                    <td align="center"><%= sales_order.delivery_address_line1 %></td>
                     <td align="center"><%= sales_order.status %></td>
                     <td align="center"><%= link_to 'Ver',{ action: 'show', id: sales_order.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: sales_order.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>

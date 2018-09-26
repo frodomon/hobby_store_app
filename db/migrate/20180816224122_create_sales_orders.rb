@@ -14,7 +14,7 @@ class CreateSalesOrders < ActiveRecord::Migration[5.2]
       t.string :delivery_address_line1
       t.string :delivery_address_line2
       t.belongs_to :payment_method, foreign_key:true
-      t.boolean :status
+      t.boolean :status, default: false
 
       t.timestamps
     end

@@ -161,6 +161,8 @@ module ApplicationHelper
     case controller_name
       when 'sales_orders'
         clase
+      when 'tickets'
+        clase
       else
         nil
     end

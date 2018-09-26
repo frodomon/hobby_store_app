@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_023356) do
+ActiveRecord::Schema.define(version: 2018_09_25_231229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.date "delivery_date"
     t.bigint "user_id"
     t.float "ammount"
-    t.boolean "registered"
+    t.boolean "registered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
@@ -223,7 +223,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.string "delivery_address_line1"
     t.string "delivery_address_line2"
     t.bigint "payment_method_id"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["delivery_hour_id"], name: "index_sales_orders_on_delivery_hour_id"
@@ -273,6 +273,40 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ticket_details", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.float "unit_price"
+    t.float "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_ticket_details_on_product_id"
+    t.index ["ticket_id"], name: "index_ticket_details_on_ticket_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "client"
+    t.date "ticket_date"
+    t.string "ticket_number"
+    t.date "delivery_date"
+    t.bigint "delivery_hour_id"
+    t.bigint "delivery_method_id"
+    t.float "delivery_cost"
+    t.string "discount_coupon"
+    t.bigint "payment_method_id"
+    t.float "ammount"
+    t.string "delivery_address_line1"
+    t.string "delivery_address_line2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_hour_id"], name: "index_tickets_on_delivery_hour_id"
+    t.index ["delivery_method_id"], name: "index_tickets_on_delivery_method_id"
+    t.index ["payment_method_id"], name: "index_tickets_on_payment_method_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "ubigeos", force: :cascade do |t|
@@ -373,5 +407,11 @@ ActiveRecord::Schema.define(version: 2018_09_14_023356) do
   add_foreign_key "sales_orders", "payment_methods"
   add_foreign_key "sales_orders", "users"
   add_foreign_key "store_credits", "users"
+  add_foreign_key "ticket_details", "products"
+  add_foreign_key "ticket_details", "tickets"
+  add_foreign_key "tickets", "delivery_hours"
+  add_foreign_key "tickets", "delivery_methods"
+  add_foreign_key "tickets", "payment_methods"
+  add_foreign_key "tickets", "users"
   add_foreign_key "warehouses", "ubigeos"
 end

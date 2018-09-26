@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tickets
   resources :doi_types
   resources :delivery_hours
   resources :payment_methods

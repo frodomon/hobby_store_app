@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ticket.user %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @ticket.client %>
+</p>
+
+<p>
+  <strong>Ticket date:</strong>
+  <%= @ticket.ticket_date %>
+</p>
+
+<p>
+  <strong>Ticket number:</strong>
+  <%= @ticket.ticket_number %>
+</p>
+
+<p>
+  <strong>Delivery date:</strong>
+  <%= @ticket.delivery_date %>
+</p>
+
+<p>
+  <strong>Delivery method:</strong>
+  <%= @ticket.delivery_method_id %>
+</p>
+
+<p>
+  <strong>Delivery cost:</strong>
+  <%= @ticket.delivery_cost %>
+</p>
+
+<p>
+  <strong>Discount coupon:</strong>
+  <%= @ticket.discount_coupon %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @ticket.ammount %>
+</p>
+
+<p>
+  <strong>Delivery address:</strong>
+  <%= @ticket.delivery_address_line1 %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
