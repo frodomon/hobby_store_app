@@ -67,14 +67,72 @@ module ApplicationHelper
     params[:action] == action_name ? "active" : nil
   end
 
-  def activation(class_name)
-    if class_name == nil 
+  def activation(class_name = nil)
+    if class_name === nil 
       clase = "active"
     else
-      clase = "active " + class_name
+      clase = class_name
     end
   end
 
+  def navigation_lvl1(menu_name = nil)
+    menu_name == active_menu() ? "active" : nil 
+    
+
+  end
+  def navigation_lvl2(helper = nil)
+    helper == active_menu() ? "in" : nil
+  
+  end
+
+  def active_menu()
+    controller_name = params[:controller]
+    case controller_name
+      when 'ubigeos'
+        "mantenimiento"
+      when 'doi_types'
+        "mantenimiento"
+      when 'suppliers'
+        "mantenimiento"
+      when 'warehouses'
+        "mantenimiento"
+      when 'delivery_methods'
+        "mantenimiento"
+      when 'payment_methods'
+        "mantenimiento"
+      when 'delivery_hours'
+        "mantenimiento"
+      when 'products'
+        "product_line"
+      when 'categories'
+        "product_line"
+      when 'sub_categories'
+        "product_line"
+      when 'game_types'
+        "product_line"
+      when 'game_styles'
+        "product_line"
+      when 'thematics'
+        "product_line"
+      when 'suggested_ages'
+        "product_line"
+      when 'game_lines'
+        "product_line"
+      when 'inventories'
+        "inventory_mgmt"
+      when 'store_credits'
+        "store_credits"
+      when 'purchase_orders'
+        "compras"
+      when 'sales_orders'
+        "ventas"
+      when 'tickets'
+        "ventas"
+      else
+        nil
+    end
+  end
+    
   def is_active_mantenimiento(class_name)
     clase = activation(class_name)
     controller_name = params[:controller]

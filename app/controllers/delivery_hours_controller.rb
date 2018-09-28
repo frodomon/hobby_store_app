@@ -1,5 +1,7 @@
 class DeliveryHoursController < ApplicationController
   before_action :set_delivery_hour, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
 
   # GET /delivery_hours
   # GET /delivery_hours.json

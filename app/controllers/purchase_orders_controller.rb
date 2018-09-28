@@ -1,6 +1,7 @@
 class PurchaseOrdersController < ApplicationController
   before_action :set_purchase_order, only: [:show, :edit, :update, :destroy, :update_warehouse_from_purchase_order]
-
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index

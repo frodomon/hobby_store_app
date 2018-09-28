@@ -33,14 +33,30 @@ class Ability
     if user.has_role? :SuperAdmin
       can :manage, :all
     elsif user.has_role? :Manager
-      can :read, :all?
+      can :read, :all
+      can :manage, Ticket
+      can :manage, SalesOrder
+      can :manage, PurchaseOrder
+      can :manage, Inventory
+      can :manage, Product
+      can :manage, GameLine
+      can :manage, GameType
+      can :manage, Category
+      can :manage, SubCategory
+      can :manage, SuggestedAge
+      can :manage, GameStyle
+      can :manage, Thematic
     elsif user.has_role? :SalesForce
-    
+      can :read, Inventory
+      can :manage, Tickets
+      can :manage, SalesOrder
     elsif user.has_role? :Auctioneer
     
     else
+      can :read, StoreCredit
       can :create, User
       cannot :read, User
+
     end
   end
 end

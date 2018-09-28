@@ -21,10 +21,6 @@
               <li>
                 <%= link_to "Editar Perfil", edit_user_registration_path(current_user.id) %>
               </li>
-              <li><a href="">Contacts</a>
-              </li>
-              <li><a href="">Mailbox</a>
-              </li>
               <li class="divider"></li>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
@@ -40,9 +36,9 @@
           <i class="fa fa-home"></i> <span class="nav-label">Inicio</span>
         <% end %>
       </li>
-      <li class="<%= is_active_mantenimiento(nil) %>">
-        <a href=""><i class="fa fa-edit"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_mantenimiento('in') %>">
+      <li class="<%= navigation_lvl1("mantenimiento") %>">
+        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("mantenimiento") %>">
           <li class="<%= is_active_controller('ubigeos') %>">
             <%= link_to 'Ubigeos', ubigeos_path %>
           </li>
@@ -67,9 +63,9 @@
         </ul>      
       </li> 
       </li>
-      <li class="<%= is_active_product_line(nil) %>">
-        <a href=""><i class="fa fa-edit"></i><span class="nav-label">Linea de Productos</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_product_line('in') %>">
+      <li class="<%= navigation_lvl1("product_line") %>">
+        <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Linea de Productos</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("product_line") %>">
           <li class="<%= is_active_controller('products') %>">
             <%= link_to 'Productos', products_path %>
           </li>
@@ -96,9 +92,9 @@
           </li>      
         </ul>
       </li>
-      <li class="<%= is_active_inventory_mgmt(nil) %>">
-        <a href=""><i class="fa fa-edit"></i><span class="nav-label">Gestión de Inventarios</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_inventory_mgmt('in') %>">
+      <li class="<%= navigation_lvl1("inventory_mgmt") %>">
+        <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Gestión de Inventarios</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("inventory_mgmt") %>">
           <li class="<%= is_active_controller('inventories') %>">
             <%= link_to 'Inventario', inventories_path %>
           </li>
@@ -106,9 +102,9 @@
         </ul>
       </li>
 
-       <li class="<%= is_active_store_credit(nil) %>">
-        <a href=""><i class="fa fa-edit"></i><span class="nav-label">Crédito en Tienda</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_inventory_mgmt('in') %>">
+       <li class="<%= navigation_lvl1("store_credits") %>">
+        <a href="#"><i class="fa fa-edit"></i><span class="nav-label">Crédito en Tienda</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("store_credits") %>">
           <li class="<%= is_active_controller('store_credits') %>">
             <%= link_to 'Crédito', store_credits_path %>
           </li>
@@ -116,18 +112,18 @@
         </ul>
       </li>
 
-      <li class="<%= is_active_compras(nil) %>">
-        <a href=""><i class="fa fa-desktop"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_compras('in') %>">
+      <li class="<%= navigation_lvl1("compras") %>">
+        <a href=#""><i class="fa fa-desktop"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("compras") %>">
           <li class="<%= is_active_controller('purchase_orders') %>">
             <%= link_to 'Órdenes de Compra', purchase_orders_path %>
           </li>
         </ul>
       </li>
 
-      <li class="<%= is_active_ventas(nil) %>">
-        <a href=""><i class="fa fa-calculator"></i> <span class="nav-label">Ventas</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse <%= is_active_ventas('in') %>">
+      <li class="<%= navigation_lvl1("ventas") %>">
+        <a href="#"><i class="fa fa-calculator"></i> <span class="nav-label">Ventas</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse <%= navigation_lvl2("ventas") %>">
           <li class="<%= is_active_controller('sales_orders') %>">
             <%= link_to 'Órdenes de Venta', sales_orders_path %>
           </li>

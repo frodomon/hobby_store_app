@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
 
   # GET /tickets
   # GET /tickets.json
@@ -71,14 +73,8 @@ class TicketsController < ApplicationController
 
   def update_warehouse
     almacen = Inventory.where('quantity > 0').order('product_id, registration_date ASC')
-    almacen.each do |alm|
-      puts alm.product_id
-      puts alm.quantity
-    end
     ticket_details = @ticket.ticket_details
-    puts ticket_details.length
     ticket_details.each do |tkt|
-      puts tkt.product_id
       pedido = tkt.quantity
       almacen.each do |alm|
         if tkt.product_id == alm.product_id
@@ -95,12 +91,10 @@ class TicketsController < ApplicationController
               pedido = 0
             end
             alm.update(quantity: cantidad)
-            puts alm.quantity
           end
         end
       end
     end 
-
   end
 
   private

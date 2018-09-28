@@ -1,5 +1,7 @@
 class StoreCreditsController < ApplicationController
   before_action :set_store_credit, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
 
   # GET /store_credits
   # GET /store_credits.json

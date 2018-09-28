@@ -1,5 +1,7 @@
 class SuggestedAgesController < ApplicationController
   before_action :set_suggested_age, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
 
   # GET /suggested_ages
   # GET /suggested_ages.json

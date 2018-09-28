@@ -1,5 +1,7 @@
 class ThematicsController < ApplicationController
   before_action :set_thematic, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show ]
+  load_and_authorize_resource
 
   # GET /thematics
   # GET /thematics.json
