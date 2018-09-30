@@ -1,11 +1,11 @@
 <%= form_for @ubigeo, local: true do |f| %>
-  <%= form_errors_for @sales_order %>
+  <%= form_errors_for @ubigeo %>
   
   <div class= "<%= field_class(@ubigeo, :ug_id) %>">
     <%= f.label :ug_id, "Ubigeo", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
     <div class='col-lg-8 col-md-8 col-sm-8'>
       <%= f.number_field :ug_id, autofocus: true, class: 'form-control' %>
-    </div>    
+    </div>
   </div>
 
   <div class= "<%= field_class(@ubigeo, :name) %>">

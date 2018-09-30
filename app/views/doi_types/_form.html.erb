@@ -1,22 +1,15 @@
-<%= form_with(model: doi_type, local: true) do |form| %>
-  <% if doi_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(doi_type.errors.count, "error") %> prohibited this doi_type from being saved:</h2>
+<%= form_for @doi_type, local: true,  html: {class: 'form-horizontal'} do |f| %>
+  <%= form_errors_for @doi_type %>
 
-      <ul>
-      <% doi_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class= "<%= field_class(@doi_type, :name) %>">
+    <%= f.label :name, "Nombre del Documento de Identidad", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :name, autofocus: true, placeholder: 'Nombre del Documento de Identidad', class: 'form-control' %>
+    </div> 
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b'%>
   </div>
+
 <% end %>

@@ -30,7 +30,6 @@
                   <th>Ubigeo</th>
                   <th>Nombre</th>
                   <th>Ubigeo Padre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -41,7 +40,6 @@
                     <td align="center"><%= ubigeo.ug_id %></td>
                     <td align="center"><%= ubigeo.name %></td>
                     <td align="center"><%= ubigeo.parent_id %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: ubigeo.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: ubigeo.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: ubigeo.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

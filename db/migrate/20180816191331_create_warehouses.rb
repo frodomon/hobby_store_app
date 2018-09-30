@@ -8,7 +8,7 @@ class CreateWarehouses < ActiveRecord::Migration[5.2]
       t.string :departamento
       t.string :provincia
       t.string :distrito
-      t.belongs_to :ubigeo, foreign_key: true
+      t.references :ubigeo, foreign_key: true
       t.string :postal_code
 
       t.timestamps
