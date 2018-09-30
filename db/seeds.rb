@@ -2063,9 +2063,8 @@ Ubigeo.create(ug_id: 250301, name:"Padre Abad", parent_id: 2503)
 Ubigeo.create(ug_id: 250302, name:"Irazola", parent_id: 2503)
 Ubigeo.create(ug_id: 250303, name:"Curimana", parent_id: 2503)
 Ubigeo.create(ug_id: 250401, name:"Purus", parent_id: 2504)
-
 #SECCION MANTENIMIENTOS
-DoiType.create(name: "Documento Nacional de Identidad", short_name:"DNI")
+DoiType.create(name: "Documento Nacional de Identidad", short_name: "DNI")
 Warehouse.create(shortname:"Tienda", house_type:"Casa", address_line1: "Av. Mariano Cornejo 2286", address_line2:"Cercado de Lima, Lima", departamento:"Lima", provincia: "Lima", distrito: "Cercado de Lima", ubigeo_id: 1469, postal_code: 150101)
 Warehouse.create(shortname:"Alfredo", house_type:"Casa", address_line1: "Calle Ventura Ccallamaqui 166", address_line2:"Urb. Pando 2da Etapa, San Miguel , Lima", departamento:"Lima", provincia: "Lima", distrito: "San Miguel", ubigeo_id: 1504, postal_code: 150136)
 Supplier.create(name:"JVLAT", contact:"Ricardo Puente de la Barrera")
@@ -2093,4 +2092,4 @@ PaymentMethod.create(name: "VISA")
 DeliveryHour.create(name: "9am - 1pm")
 DeliveryHour.create(name: "2pm - 6pm")
 
-Product.create(name:"Bundle Core Set 2019", short_name: "MTG BUNDLE M19", category_id: tcg.id, sub_category_id: mtg.id, game_type_id:gt.id, game_style_id:gs.id, thematic_id:th.id, suggested_age_id:sa.id, game_line_id:gl.id, full_price: 180.00, presale_price: 150.00 )
+Product.create(name:"Bundle Core Set 2019", short_name: "MTG BUNDLE M19", category_id: tcg.id, sub_category_id: mtg.id, game_type_id:gt.id, game_style_id:gs.id, thematic_id:th.id, suggested_age_id:sa.id, game_line_id:gl.id, full_price: 180.00, presale_price: 150.00 

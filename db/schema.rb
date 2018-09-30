@@ -409,9 +409,6 @@ ActiveRecord::Schema.define(version: 2018_09_25_231229) do
   add_foreign_key "store_credits", "users"
   add_foreign_key "ticket_details", "products"
   add_foreign_key "ticket_details", "tickets"
-  add_foreign_key "tickets", "delivery_hours"
-  add_foreign_key "tickets", "delivery_methods"
-  add_foreign_key "tickets", "payment_methods"
   add_foreign_key "tickets", "users"
   add_foreign_key "warehouses", "ubigeos"
 end

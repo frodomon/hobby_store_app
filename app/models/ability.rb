@@ -54,6 +54,7 @@ class Ability
     
     else
       can :read, StoreCredit
+      can :read, Ubigeo
       can :create, User
       cannot :read, User
 

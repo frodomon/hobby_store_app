@@ -12,10 +12,10 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.float :full_price
       t.float :presale_price
       t.float :otto_price
-      t.belongs_to :game_type, index: true, foreign_key: true
-      t.belongs_to :game_style, index: true, foreign_key: true
-      t.belongs_to :thematic, index: true, foreign_key: true
-      t.belongs_to :suggested_age, index: true, foreign_key: true
+      t.references :game_type, index: true, foreign_key: true
+      t.references :game_style, index: true, foreign_key: true
+      t.references :thematic, index: true, foreign_key: true
+      t.references :suggested_age, index: true, foreign_key: true
       t.string :suggested_players
       t.string :game_duration
       t.string :language
@@ -27,7 +27,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.float :height
       t.float :width
       t.float :length
-      t.belongs_to :game_line, index: true, foreign_key: true
+      t.references :game_line, index: true, foreign_key: true
       t.string :video_reel_url
       t.string :video_how_to_url
       t.string :video_gameplay_url

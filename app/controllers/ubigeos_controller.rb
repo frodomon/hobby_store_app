@@ -1,6 +1,6 @@
 class UbigeosController < ApplicationController
   before_action :set_ubigeo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:index, :show ]
+  before_action :authenticate_user!, :except => [:index, :show, :get_departamentos, :get_provincias, :get_distritos, :get_ubigeo ]
   load_and_authorize_resource
 
   # GET /ubigeos
