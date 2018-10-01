@@ -32,7 +32,6 @@
                   <th>Monto</th>
                   <th>Detalle</th>
                   <th>Fecha</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -45,7 +44,6 @@
                     <td align="center"><%= store_credit.ammount %></td>
                     <td align="center"><%= store_credit.detail %></td>
                     <td align="center"><%= store_credit.credit_date %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: store_credit.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: store_credit.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: store_credit.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

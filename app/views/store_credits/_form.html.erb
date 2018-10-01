@@ -1,37 +1,35 @@
-<%= form_with(model: store_credit, local: true) do |form| %>
-  <% if store_credit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(store_credit.errors.count, "error") %> prohibited this store_credit from being saved:</h2>
+<%= form_for @store_credit, local: true, html: { id: "submit-form"  } do |f| %>
+  <%= form_errors_for @store_credit %>
 
-      <ul>
-      <% store_credit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@store_credit, :user_id) %>">
+    <%= f.label :user_id, "Jugador", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :user_id, autofocus: true, class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :ammount %>
-    <%= form.text_field :ammount %>
+  <div class= "<%= field_class(@store_credit, :ammount) %>">
+    <%= f.label :ammount, "Monto", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.number_field :ammount, autofocus: true, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_field :detail %>
+  <div class= "<%= field_class(@store_credit, :detail) %>">
+    <%= f.label :detail, "Detalle", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :detail, autofocus: true, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :credit_date %>
-    <%= form.date_field :credit_date %>
+  <div class= "<%= field_class(@store_credit, :credit_date) %>">
+    <%= f.label :credit_date, "Fecha", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :credit_date, autofocus: true, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

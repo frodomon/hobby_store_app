@@ -51,10 +51,10 @@ class Ability
       can :manage, Tickets
       can :manage, SalesOrder
     elsif user.has_role? :Auctioneer
-    
+      can :manage, Ubigeo
     else
       can :read, StoreCredit
-      can :read, Ubigeo
+      can :manage, Ubigeo
       can :create, User
       cannot :read, User
 

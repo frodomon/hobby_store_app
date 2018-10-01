@@ -1,23 +1,4 @@
 $(document).ready(function () {
-  $('#user_birthdate').datepicker({
-    todayBtn: "linked",
-    keyboardNavigation: false,
-    forceParse: false,
-    calendarWeeks: true,
-    autoclose: true,
-    todayHighlight: true,
-    format: 'yyyy-mm-dd'
-  });
-  $('.i-checks').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-  });
-  
-  var fileinput = $('.fileinput').fileinput();
-  if ($('.fileinput-filename').val !== null){
-    fileinput.addClass('fileinput-exists').removeClass('fileinput-new')
-  }
-
   var edit_ug = {
     departamentos: function(selector, id){
       var jsonUrl = "/ubigeo/get/departamentos.json"
@@ -60,12 +41,12 @@ $(document).ready(function () {
     e.preventDefault();
     var optionSelected = $("option:selected", this);
     var distrito= this.value;
-    $('#user_address_attributes_ubigeo_id').val(distrito)
+    $('#warehouse_ubigeo_id').val(distrito)
   });
 });
 
 function PopulateUbigeos(arreglo){
-  var ubigeo_id = $('#user_address_attributes_ubigeo_id').val()
+  var ubigeo_id = $('#warehouse_ubigeo_id').val()
   
   var jsonUrl = "/ubigeo/get/ubigeo/"+ubigeo_id+".json"
   distrito_id = get_data(jsonUrl,null).toString()

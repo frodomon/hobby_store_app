@@ -29,7 +29,6 @@
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -39,7 +38,6 @@
                 <% @delivery_hours.each do |delivery_hour| %>
                   <tr>
                     <td align="center"><%= delivery_hour.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: delivery_hour.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: delivery_hour.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: delivery_hour.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

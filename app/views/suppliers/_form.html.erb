@@ -1,57 +1,66 @@
-<%= form_with(model: supplier, local: true) do |form| %>
-  <% if supplier.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
+<%= form_for @supplier, local: true, html: { id: "submit-form"  } do |f| %>
+  <%= form_errors_for @supplier %>
 
-      <ul>
-      <% supplier.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@supplier, :name) %>">
+    <%= f.label :name, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :name, placeholder: "Nombre", class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :ruc %>
-    <%= form.text_field :ruc %>
+  <div class= "<%= field_class(@supplier, :ruc) %>">
+    <%= f.label :ruc, "RUC", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :ruc,  class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address_line_1 %>
-    <%= form.text_field :address_line_1 %>
+  <div class= "<%= field_class(@supplier, :address_line_1) %>">
+    <%= f.label :address_line_1, "Dirección Línea 1", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :address_line_1, placeholder: "Dirección - Línea 1", class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address_line_2 %>
-    <%= form.text_field :address_line_2 %>
+  <div class= "<%= field_class(@supplier, :address_line_2) %>">
+    <%= f.label :address_line_2, "Dirección Línea 2", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :address_line_2, placeholder: "Dirección - Línea 2", class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :contact %>
-    <%= form.text_field :contact %>
+  <div class= "<%= field_class(@supplier, :contact) %>">
+    <%= f.label :contact, "Contacto", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :contact, placeholder: "Nombre Contacto", class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :contact_mobile %>
-    <%= form.text_field :contact_mobile %>
+  <div class= "<%= field_class(@supplier, :contact_mobile) %>">
+    <%= f.label :contact_mobile, "Cel. Contacto", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.number_field :contact_mobile, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :contact_email %>
-    <%= form.text_field :contact_email %>
+  <div class= "<%= field_class(@supplier, :contact_email) %>">
+    <%= f.label :contact_email, "e-mail Contacto", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.email_field :contact_email, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
+  <div class= "<%= field_class(@supplier, :active) %>">
+    <%= f.label :active, "Activo", class: 'col-lg-4 col-md-4 col-sm-4 control-label'  %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <label class="i-checks"> 
+        <%= f.check_box :active %>
+      </label>
+    </div>
   </div>
 
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

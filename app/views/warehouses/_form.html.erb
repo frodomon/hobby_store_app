@@ -1,62 +1,75 @@
-<%= form_with(model: warehouse, local: true) do |form| %>
-  <% if warehouse.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+<%= form_for @warehouse, local: true do |f| %>
+  <%= form_errors_for @warehouse%>
 
-      <ul>
-      <% warehouse.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@warehouse, :shortname) %>">
+    <%= f.label :shortname, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :shortname, autofocus: true, placeholder: 'Nombre del Almacén', class: 'form-control' %>
+    </div>    
+  </div>
+
+  <div class= "<%= field_class(@warehouse, :house_type) %>">
+    <%= f.label :house_type, "Tipo de Casa", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :house_type, autofocus: true, placeholder: 'Tipo de Casa', class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :shortname %>
-    <%= form.text_field :shortname %>
   </div>
 
-  <div class="field">
-    <%= form.label :house_type %>
-    <%= form.text_field :house_type %>
+  <div class= "<%= field_class(@warehouse, :address_line1) %>">
+    <%= f.label :address_line1, "Dirección - Línea 1", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :address_line1, autofocus: true, placeholder: 'Dirección - Línea 1', class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address_line1 %>
-    <%= form.text_field :address_line1 %>
+  <div class= "<%= field_class(@warehouse, :address_line2) %>">
+    <%= f.label :address_line2, "Dirección - Línea 2", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :address_line2, autofocus: true, placeholder: 'Dirección - Línea 2', class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address_line2 %>
-    <%= form.text_field :address_line2 %>
+  <div class= "<%= field_class(@warehouse, :departamento) %>">
+    <%= f.label :departamento, "Departamento", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <select id="departamento" class="form-select form-control">
+        <option value = "default" selected>Seleccione un Departamento</option>
+      </select>
+      <%= f.hidden_field :departamento, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :departamento %>
-    <%= form.text_field :departamento %>
+  <div class= "<%= field_class(@warehouse, :provincia) %>">
+    <%= f.label :provincia, "Provincia", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <select id="provincia" class="form-select form-control">
+        <option value = "default" selected>Seleccione una Provincia</option>
+      </select>
+      <%= f.hidden_field :provincia, class: "form-control" %>
+    </div>
   </div>
 
+  <div class= "<%= field_class(@warehouse, :distrito) %>">
+    <%= f.label :distrito, "Distrito", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <select id="distrito" class="form-select form-control">
+        <option value = "default" selected>Seleccione un Distrito</option>
+      </select>
+      <%= f.hidden_field :distrito, class: "form-control" %>
+    </div>
+  </div>
   <div class="field">
-    <%= form.label :provincia %>
-    <%= form.text_field :provincia %>
+    <%= f.hidden_field :ubigeo_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :distrito %>
-    <%= form.text_field :distrito %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ubigeo_id %>
-    <%= form.text_field :ubigeo_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :postal_code %>
-    <%= form.text_field :postal_code %>
+  <div class= "<%= field_class(@warehouse, :postal_code) %>">
+    <%= f.label :postal_code, "Cödigo Postal", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :postal_code, autofocus: true, placeholder: 'Código Postal', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

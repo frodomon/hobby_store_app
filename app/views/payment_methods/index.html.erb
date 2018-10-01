@@ -29,7 +29,6 @@
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -38,7 +37,6 @@
                 <% @payment_methods.each do |payment_method| %>
                   <tr>
                     <td align="center"><%= payment_method.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: payment_method.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: payment_method.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: payment_method.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

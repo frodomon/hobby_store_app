@@ -1,20 +1,7 @@
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
 $(document).ready(function () {
-  $('#user_birthdate').datepicker({
-    todayBtn: "linked",
-    keyboardNavigation: false,
-    forceParse: false,
-    calendarWeeks: true,
-    autoclose: true,
-    todayHighlight: true,
-    format: 'yyyy-mm-dd'
-  });
-  $('.i-checks').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-  });
-
-  
-  var Ubigeos = {
+	var Ubigeos = {
     departamentos: function(selector){
       var jsonUrl = "/ubigeo/get/departamentos.json"
       $.getJSON(jsonUrl).done (function(data){
@@ -44,7 +31,7 @@ $(document).ready(function () {
     var dep_name = $(this).find(':selected').text();
     $('#provincia').empty();
     $.when(Ubigeos.provincias(departamento, $('#provincia'))).done($('.provincia').show());
-    $('#user_address_attributes_departamento').val(dep_name);
+    $('#warehouse_departamento').val(dep_name);
   });
   $('#provincia').on('change',function(e){
     e.preventDefault();
@@ -52,15 +39,15 @@ $(document).ready(function () {
     var prov_name = $(this).find(':selected').text();
     $('#distrito').empty()
     $.when(Ubigeos.distritos(provincia, $('#distrito'))).done($('.distrito').show())
-    $('#user_address_attributes_provincia').val(prov_name);
+    $('#warehouse_provincia').val(prov_name);
   });
   $('#distrito').change(function(e){
     e.preventDefault();
     var optionSelected = $("option:selected", this);
     var distrito= $(this).find(':selected').val();
     var dis_name = $(this).find(':selected').text();
-    $('#user_address_attributes_ubigeo_id').val(distrito)
-    $('#user_address_attributes_distrito').val(dis_name);
+    $('#warehouse_ubigeo_id').val(distrito)
+    $('#warehouse_distrito').val(dis_name);
   });
 })
 

@@ -36,7 +36,6 @@
                   <th>Distrito</th>
                   <th>Ubigeo</th>
                   <th>Código Postal</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -52,7 +51,6 @@
                     <td align="center"><%= warehouse.distrito %></td>
                     <td align="center"><%= Ubigeo.find(warehouse.ubigeo_id).name %></td>
                     <td align="center"><%= warehouse.postal_code %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: warehouse.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: warehouse.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: warehouse.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

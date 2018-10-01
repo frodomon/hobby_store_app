@@ -30,7 +30,6 @@
                 <tr>
                   <th>Nombre Corto</th>
                   <th>Nombre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -41,7 +40,6 @@
                   <tr>
                     <td align="center"><%= doi_type.short_name %></td>
                     <td align="center"><%= doi_type.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: doi_type.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: doi_type.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: doi_type.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

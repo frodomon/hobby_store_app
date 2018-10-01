@@ -1,182 +1,183 @@
-<%= form_for @product, local: true, html: { id: "submit-form"  } do |form| %>
+<%= form_for @product, local: true, html: { id: "submit-form"  } do |f| %>
   <%= form_errors_for @product %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class= "<%= field_class(@product, :name) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :name, "Nombre", class: 'control-label' %>
+      <%= f.text_field :name, placeholder: "Nombre del Producto", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :short_name) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :short_name, "Nombre Corto", class: 'control-label' %>
+      <%= f.text_field :short_name, placeholder: "Nombre Corto", class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= form.label :short_name %>
-    <%= form.text_field :short_name %>
+  <div class="row">
+    <div class= "<%= field_class(@product, :barcode) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :barcode, "Código de Barras", class: 'control-label' %>
+      <%= f.text_field :barcode, placeholder: "Código de Barras", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :sku) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :sku, "SKU", class: 'control-label' %>
+      <%= f.text_field :sku, placeholder: "SKU", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :category_id) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :category_id, "Categoría", class: 'control-label' %>
+      <%= f.collection_select :category_id, Category.order(:name), :id, :name, options = { :prompt => 'Seleccione una Categoría'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+    <div class= "<%= field_class(@product, :sub_category_id) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :sub_category_id, "Sub Categoŕía", class: 'control-label' %>
+      <%= f.collection_select :sub_category_id, SubCategory.order(:name), :id, :name, options = { :prompt => 'Seleccione una Sub Categoría'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :short_description) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :short_description, "Descripción Corta", class: 'control-label' %>
+      <%= f.text_field :short_description, placeholder:"Descripción Corta", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :large_description) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :large_description, "Descripción Larga", class: 'control-label' %>
+      <%= f.text_area :large_description, placeholder: "Descripción Larga", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :otto_price) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :otto_price, "Precio de Compra", class: 'control-label' %>
+      <%= f.text_field :otto_price, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :full_price) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :full_price, "Precio de Lista", class: 'control-label' %>
+      <%= f.text_field :full_price, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :presale_price) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :presale_price, "Precio de Pre-Venta", class: 'control-label' %>
+      <%= f.text_field :presale_price, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :game_type_id) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :game_type_id, "Tipo de Juego", class: 'control-label' %>
+      <%= f.collection_select :game_type_id, GameType.order(:name), :id, :name, options = { :prompt => 'Seleccione un Tipo de Juego'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+
+    <div class= "<%= field_class(@product, :game_style_id) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :game_style_id, "Estilo de Juego", class: 'control-label' %>
+      <%= f.collection_select :game_style_id, GameStyle.order(:name), :id, :name, options = { :prompt => 'Seleccione un Estilo de Juego'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+
+    <div class= "<%= field_class(@product, :thematic_id) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :thematic_id, "Temática", class: 'control-label' %>
+      <%= f.collection_select :thematic_id, Thematic.order(:name), :id, :name, options = { :prompt => 'Seleccione una Tematica'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+    <div class= "<%= field_class(@product, :ranking_bgg) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :ranking_bgg, "Ranking Board Game Geek", class: 'control-label' %>
+      <%= f.text_field :ranking_bgg, placeholder: "Ranking Board Game Geek", class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :barcode %>
-    <%= form.text_field :barcode %>
+  <div class="row">
+    <div class= "<%= field_class(@product, :suggested_age_id) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :suggested_age_id, "Edad Sugerida", class: 'control-label' %>
+      <%= f.collection_select :suggested_age_id, SuggestedAge.order(:name), :id, :name, options = { :prompt => 'Seleccione una Edad Sugerida'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+    <div class= "<%= field_class(@product, :suggested_players) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :suggested_players, "Jugadores Sugeridos", class: 'control-label' %>
+      <%= f.text_field :suggested_players, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :game_duration) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :game_duration, "Duracion del Juego", class: 'control-label' %>
+      <%= f.text_field :game_duration, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :game_line_id) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :game_line_id, "Línea de Juegos", class: 'control-label' %>
+      <%= f.collection_select :game_line_id, GameLine.order(:name), :id, :name, options = { :prompt => 'Seleccione una Linea de Juego'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :language) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :language, "Idioma", class: 'control-label' %>
+      <%= f.text_field :language, placeholder: "Idioma", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :author) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :author, "Autor", class: 'control-label' %>
+      <%= f.text_field :author, placeholder: "Autor", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :origin) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :origin, "Origen", class: 'control-label' %>
+      <%= f.text_field :origin, placeholder:"Origen", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :brand) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :brand, "Marca", class: 'control-label' %>
+      <%= f.text_field :brand, placeholder: "Marca", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :editorial) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :editorial, "Editorial", class: 'control-label' %>
+      <%= f.text_field :editorial, placeholder: "Editorial", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :weight) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :weight, "Peso", class: 'control-label' %>
+      <%= f.text_field :weight, placeholder: "Peso", class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :height) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :height, "Alto", class: 'control-label' %>
+      <%= f.text_field :height, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :width) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :width, "Ancho", class: 'control-label' %>
+      <%= f.text_field :width, class: 'form-control' %>
+    </div>
+    <div class= "<%= field_class(@product, :length) %> col-lg-3 col-md-3 col-sm-3">
+      <%= f.label :length, "Largo", class: 'control-label' %>
+      <%= f.text_field :length, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :sku %>
-    <%= form.text_field :sku %>
-  </div>
+  
+  <div class="row">
+    <div class= "<%= field_class(@product, :video_reel_url) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :video_reel_url, "URL Video Reel", class: 'control-label' %>
+      <%= f.text_field :video_reel_url, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.order(:name), :id, :name, options = { :prompt => 'Seleccione una Categoría'} %>
-  </div>
+    <div class= "<%= field_class(@product, :video_how_to_url) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :video_how_to_url, "URL Video Como Jugar", class: 'control-label' %>
+      <%= f.text_field :video_how_to_url, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :sub_category_id %>
-    <%= form.collection_select :sub_category_id, SubCategory.order(:name), :id, :name, options = { :prompt => 'Seleccione una Sub Categoría'} %>
+    <div class= "<%= field_class(@product, :video_gameplay_url) %> col-lg-4 col-md-4 col-sm-4">
+      <%= f.label :video_gameplay_url, "URL Video Gameplay", class: 'control-label' %>
+      <%= f.text_field :video_gameplay_url, class: 'form-control' %>
+    </div>
   </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :img_box) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :img_box, "Imagen de la Caja", class: 'control-label' %>
+      <%= f.text_field :img_box, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :short_description %>
-    <%= form.text_field :short_description %>
+    <div class= "<%= field_class(@product, :img_box_content) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :img_box_content, "Imagen del Contenido", class: 'control-label' %>
+      <%= f.text_field :img_box_content, class: 'form-control' %>
+    </div>
   </div>
+  <div class="row">
+    <div class= "<%= field_class(@product, :img_board_set) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :img_board_set, "Imagen del Juego Seteado", class: 'control-label' %>
+      <%= f.text_field :img_board_set, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :large_description %>
-    <%= form.text_area :large_description %>
+    <div class= "<%= field_class(@product, :img_board_midgame) %> col-lg-6 col-md-6 col-sm-6">
+      <%= f.label :img_board_midgame, "Imagen a mitad del juego", class: 'control-label' %>
+      <%= f.text_field :img_board_midgame, class: 'form-control'   %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :full_price %>
-    <%= form.text_field :full_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :presale_price %>
-    <%= form.text_field :presale_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :otto_price %>
-    <%= form.text_field :otto_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :game_type_id %>
-    <%= form.collection_select :game_type_id, GameType.order(:name), :id, :name, options = { :prompt => 'Seleccione un Tipo de Juego'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :game_style_id %>
-    <%= form.collection_select :game_style_id, GameStyle.order(:name), :id, :name, options = { :prompt => 'Seleccione un Estilo de Juego'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :thematic_id %>
-    <%= form.collection_select :thematic_id, Thematic.order(:name), :id, :name, options = { :prompt => 'Seleccione una Tematica'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :suggested_age_id %>
-    <%= form.collection_select :suggested_age_id, SuggestedAge.order(:name), :id, :name, options = { :prompt => 'Seleccione una Edad Sugerida'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :suggested_players %>
-    <%= form.text_field :suggested_players %>
-  </div>
-
-  <div class="field">
-    <%= form.label :game_duration %>
-    <%= form.text_field :game_duration %>
-  </div>
-
-  <div class="field">
-    <%= form.label :language %>
-    <%= form.text_field :language %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :origin %>
-    <%= form.text_field :origin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div class="field">
-    <%= form.label :editorial %>
-    <%= form.text_field :editorial %>
-  </div>
-
-  <div class="field">
-    <%= form.label :weight %>
-    <%= form.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :height %>
-    <%= form.text_field :height %>
-  </div>
-
-  <div class="field">
-    <%= form.label :width %>
-    <%= form.text_field :width %>
-  </div>
-
-  <div class="field">
-    <%= form.label :length %>
-    <%= form.text_field :length %>
-  </div>
-
-  <div class="field">
-    <%= form.label :game_line_id %>
-    <%= form.collection_select :game_line_id, GameLine.order(:name), :id, :name, options = { :prompt => 'Seleccione una Linea de Juego'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :video_reel_url %>
-    <%= form.text_field :video_reel_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :video_how_to_url %>
-    <%= form.text_field :video_how_to_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :video_gameplay_url %>
-    <%= form.text_field :video_gameplay_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :img_box %>
-    <%= form.text_field :img_box %>
-  </div>
-
-  <div class="field">
-    <%= form.label :img_box_content %>
-    <%= form.text_field :img_box_content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :img_board_set %>
-    <%= form.text_field :img_board_set %>
-  </div>
-
-  <div class="field">
-    <%= form.label :img_board_midgame %>
-    <%= form.text_field :img_board_midgame %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ranking_bgg %>
-    <%= form.text_field :ranking_bgg %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
   
 <% end %>

@@ -23,6 +23,8 @@ es:
             name:
               blank: "Debe ingresar su nombre"
     models:
+      doi_type: "Tipo de Documento de identidad"
+      warehouse: "Almacén"
       business: "Empresa"
       user: "Usuario"
       addendum: "Adenda"
@@ -40,6 +42,11 @@ es:
       setting: "Configuración"
       supplier: "Proveedor"
       vehicle: "Vehículo"
+      inventory: "Inventario"
+      store_credit: "Crédito en Tienda"
+      delivery_method: "Método de Énvio"
+      payment_method: "Método de Pago"
+      delivery_hour: "Horas de Énvio"
   unauthorized:
     subject:
       client: "Cliente"

@@ -2,7 +2,7 @@
   <%= form_errors_for @doi_type %>
 
   <div class= "<%= field_class(@doi_type, :name) %>">
-    <%= f.label :name, "Nombre del Documento de Identidad", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <%= f.label :name, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
     <div class='col-lg-8 col-md-8 col-sm-8'>
       <%= f.text_field :name, autofocus: true, placeholder: 'Nombre del Documento de Identidad', class: 'form-control' %>
     </div> 

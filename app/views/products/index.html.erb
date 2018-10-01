@@ -45,7 +45,6 @@
                   <th>Duración de la partida</th>
                   <th>Línea de Juegos</th>
                   <th>Ranking BGG</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -70,7 +69,6 @@
                     <td align="center"><%= product.game_duration %></td>
                     <td align="center"><%= GameLine.find(product.game_line_id).name %></td>
                     <td align="center"><%= product.ranking_bgg %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: product.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: product.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: product.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

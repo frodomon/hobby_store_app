@@ -36,7 +36,6 @@
                   <th>Móvil del Contacto</th>
                   <th>e-mail del Contacto</th>
                   <th>Activo</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -51,8 +50,7 @@
                     <td align="center"><%= supplier.contact %></td>
                     <td align="center"><%= supplier.contact_mobile %></td>
                     <td align="center"><%= supplier.contact_email %></td>
-                    <td align="center"><%= supplier.active %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: supplier.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
+                    <td align="center"><%= human_boolean(supplier.active) %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: supplier.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: supplier.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>
