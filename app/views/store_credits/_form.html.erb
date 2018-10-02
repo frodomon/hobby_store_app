@@ -11,7 +11,7 @@
   <div class= "<%= field_class(@store_credit, :ammount) %>">
     <%= f.label :ammount, "Monto", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
     <div class='col-lg-8 col-md-8 col-sm-8'>
-      <%= f.number_field :ammount, autofocus: true, class: 'form-control' %>
+      <%= f.number_field :ammount, autofocus: true, step: :any, class: 'form-control' %>
     </div>
   </div>
 

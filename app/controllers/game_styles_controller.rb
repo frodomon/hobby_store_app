@@ -30,7 +30,10 @@ class GameStylesController < ApplicationController
 
     respond_to do |format|
       if @game_style.save
-        format.html { redirect_to @game_style, notice: 'Game style was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El estilo de juego se creó satisfactoriamente.'
+          redirect_to game_styles_path
+        }
         format.json { render :show, status: :created, location: @game_style }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class GameStylesController < ApplicationController
   def update
     respond_to do |format|
       if @game_style.update(game_style_params)
-        format.html { redirect_to @game_style, notice: 'Game style was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El estilo de juego se actualizó satisfactoriamente.'
+          redirect_to game_styles_path
+        }
         format.json { render :show, status: :ok, location: @game_style }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class GameStylesController < ApplicationController
   def destroy
     @game_style.destroy
     respond_to do |format|
-      format.html { redirect_to game_styles_url, notice: 'Game style was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El estilo de juego se eliminó satisfactoriamente.'
+        redirect_to game_styles_path
+      }
       format.json { head :no_content }
     end
   end

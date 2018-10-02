@@ -30,7 +30,10 @@ class DeliveryHoursController < ApplicationController
 
     respond_to do |format|
       if @delivery_hour.save
-        format.html { redirect_to @delivery_hour, notice: 'Delivery hour was successfully created.' }
+        format.html { 
+          flash[:notice] = 'La hora de entrega se creó satisfactoriamente.'
+          redirect_to delivery_hours_path
+        }
         format.json { render :show, status: :created, location: @delivery_hour }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class DeliveryHoursController < ApplicationController
   def update
     respond_to do |format|
       if @delivery_hour.update(delivery_hour_params)
-        format.html { redirect_to @delivery_hour, notice: 'Delivery hour was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'La hora de entrega se actualizó satisfactoriamente.'
+          redirect_to delivery_hours_path
+        }
         format.json { render :show, status: :ok, location: @delivery_hour }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class DeliveryHoursController < ApplicationController
   def destroy
     @delivery_hour.destroy
     respond_to do |format|
-      format.html { redirect_to delivery_hours_url, notice: 'Delivery hour was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'La hora de entrega se eliminó satisfactoriamente.'
+        redirect_to delivery_hours_path
+      }
       format.json { head :no_content }
     end
   end

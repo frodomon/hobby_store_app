@@ -37,7 +37,10 @@ class SalesOrdersController < ApplicationController
 
     respond_to do |format|
       if @sales_order.save
-        format.html { redirect_to @sales_order, notice: 'Sales order was successfully created.' }
+        format.html { 
+          flash[:notice] = 'La orden de venta se creó satisfactoriamente.'
+          redirect_to sale_orders_path
+        }
         format.json { render :show, status: :created, location: @sales_order }
       else
         format.html { render :new }
@@ -51,7 +54,10 @@ class SalesOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @sales_order.update(sales_order_params)
-        format.html { redirect_to @sales_order, notice: 'Sales order was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'La orden de venta se actualizó satisfactoriamente.'
+          redirect_to sale_orders_path
+        }
         format.json { render :show, status: :ok, location: @sales_order }
       else
         format.html { render :edit }
@@ -65,7 +71,10 @@ class SalesOrdersController < ApplicationController
   def destroy
     @sales_order.destroy
     respond_to do |format|
-      format.html { redirect_to sales_orders_url, notice: 'Sales order was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'La orden de venta se eliminó satisfactoriamente.'
+        redirect_to sale_orders_path
+      }
       format.json { head :no_content }
     end
   end

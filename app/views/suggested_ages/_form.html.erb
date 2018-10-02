@@ -1,22 +1,14 @@
-<%= form_with(model: suggested_age, local: true) do |form| %>
-  <% if suggested_age.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(suggested_age.errors.count, "error") %> prohibited this suggested_age from being saved:</h2>
+<%= form_for @suggested_age, local: true, html: { id: "submit-form"  } do |f| %>
+  <%= form_errors_for @suggested_age %>
 
-      <ul>
-      <% suggested_age.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@suggested_age, :name) %>">
+    <%= f.label :name, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :name, placeholder: "Nombre", class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

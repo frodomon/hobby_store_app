@@ -1,22 +1,14 @@
-<%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<%= form_for @category, local: true, html: { id: "submit-form"  } do |f| %>
+  <%= form_errors_for @category %>
 
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@category, :name) %>">
+    <%= f.label :name, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :name, placeholder: "Nombre", class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

@@ -30,7 +30,10 @@ class GameTypesController < ApplicationController
 
     respond_to do |format|
       if @game_type.save
-        format.html { redirect_to @game_type, notice: 'Game type was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El tipo de juego se creó satisfactoriamente.'
+          redirect_to game_types_path
+        }
         format.json { render :show, status: :created, location: @game_type }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class GameTypesController < ApplicationController
   def update
     respond_to do |format|
       if @game_type.update(game_type_params)
-        format.html { redirect_to @game_type, notice: 'Game type was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El tipo de juego se actualizó satisfactoriamente.'
+          redirect_to game_types_path
+        }
         format.json { render :show, status: :ok, location: @game_type }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class GameTypesController < ApplicationController
   def destroy
     @game_type.destroy
     respond_to do |format|
-      format.html { redirect_to game_types_url, notice: 'Game type was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El tipo de juego se eliminó satisfactoriamente.'
+        redirect_to game_types_path
+      }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,33 @@
-<h1>Editing Game Line</h1>
-
-<%= render 'form', game_line: @game_line %>
-
-<%= link_to 'Show', @game_line %> |
-<%= link_to 'Back', game_lines_path %>
+<% provide(:title, "Propebis | Editar Línea de Juegos") %>
+<div class="row wrapper border-bottom white-bg page-heading breadcrumbs-margin">
+  <div class="col-lg-12">
+    <h2>Editar Línea de Juegos</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= url_for :controller => 'static_pages', :action => 'home' %>">Inicio</a>
+      </li>
+      <li>
+        <a href="<%= url_for :controller => 'game_lines', :action => 'index' %>">Línea de Juegos</a>
+      </li>
+      <li class="active">
+        <strong>Editar Línea de Juegos</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight no-padding">
+  <%= render 'shared/notifications' %>
+  <div class="row breadcrumbs-margin">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h3>Editar Línea de Juegos</h3>
+        </div>
+        <div class="ibox-content">
+          <%= render 'form' %>
+          <%= button_to 'Volver', { action: 'index'}, method: :get, class: 'btn btn-w-m btn-info' %>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

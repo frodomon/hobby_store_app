@@ -29,7 +29,6 @@
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -37,8 +36,7 @@
               <tbody>
                 <% @suggested_ages.each do |suggested_age| %>
                   <tr>
-                    <td align="center"><<%= suggested_age.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: suggested_age.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
+                    <td align="center"><%= suggested_age.name %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: suggested_age.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: suggested_age.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

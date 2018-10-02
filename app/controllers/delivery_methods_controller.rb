@@ -30,7 +30,10 @@ class DeliveryMethodsController < ApplicationController
 
     respond_to do |format|
       if @delivery_method.save
-        format.html { redirect_to @delivery_method, notice: 'Delivery method was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El método de entrega se creó satisfactoriamente.'
+          redirect_to delivery_methods_path
+        }
         format.json { render :show, status: :created, location: @delivery_method }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class DeliveryMethodsController < ApplicationController
   def update
     respond_to do |format|
       if @delivery_method.update(delivery_method_params)
-        format.html { redirect_to @delivery_method, notice: 'Delivery method was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El método de entrega se actualizó satisfactoriamente.'
+          redirect_to delivery_methods_path
+        }
         format.json { render :show, status: :ok, location: @delivery_method }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class DeliveryMethodsController < ApplicationController
   def destroy
     @delivery_method.destroy
     respond_to do |format|
-      format.html { redirect_to delivery_methods_url, notice: 'Delivery method was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El método de entrega se eliminó satisfactoriamente.'
+        redirect_to delivery_methods_path
+      }
       format.json { head :no_content }
     end
   end

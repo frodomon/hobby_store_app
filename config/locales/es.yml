@@ -22,31 +22,33 @@ es:
               blank: "Debe ingresar un nombre de usuario"
             name:
               blank: "Debe ingresar su nombre"
+        game_type:
+          attributes:
+            name: 
+              blank: "Debes ingresar un nombre"
     models:
       doi_type: "Tipo de Documento de identidad"
       warehouse: "Almacén"
-      business: "Empresa"
       user: "Usuario"
-      addendum: "Adenda"
       category: "Categoría"
-      client: "Cliente"
-      contract: "Contrato"
-      control_guide: "Guía Interna"
-      driver: "Transportista"
+      sub_category: "Sub-Categoría"
       invoice: "Factura"
       product: "Producto"
-      product_lot: "Lote de Producto"
       purchase_order: "Orden de Compra"
       remission_guide: "Guía de Remisión"
       sales_order: "Orden de Venta"
       setting: "Configuración"
       supplier: "Proveedor"
-      vehicle: "Vehículo"
       inventory: "Inventario"
       store_credit: "Crédito en Tienda"
       delivery_method: "Método de Énvio"
       payment_method: "Método de Pago"
       delivery_hour: "Horas de Énvio"
+      game_type: "Tipo de Juego"
+      game_style: "Estilo de Juego"
+      thematic: "Temática"
+      suggested_age: "Edad Sugerida"
+      game_line: "Linea de Juegos"
   unauthorized:
     subject:
       client: "Cliente"

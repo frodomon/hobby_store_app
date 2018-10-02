@@ -30,7 +30,10 @@ class UbigeosController < ApplicationController
 
     respond_to do |format|
       if @ubigeo.save
-        format.html { redirect_to @ubigeo, notice: 'Ubigeo was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El ubigeo se creó satisfactoriamente.'
+          redirect_to ubigeos_path
+        }
         format.json { render :show, status: :created, location: @ubigeo }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class UbigeosController < ApplicationController
   def update
     respond_to do |format|
       if @ubigeo.update(ubigeo_params)
-        format.html { redirect_to @ubigeo, notice: 'Ubigeo was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El ubigeo se actualizó satisfactoriamente.'
+          redirect_to ubigeos_path
+        }
         format.json { render :show, status: :ok, location: @ubigeo }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class UbigeosController < ApplicationController
   def destroy
     @ubigeo.destroy
     respond_to do |format|
-      format.html { redirect_to ubigeos_url, notice: 'Ubigeo was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El ubigeo se eliminó satisfactoriamente.'
+        redirect_to ubigeos_path
+      }
       format.json { head :no_content }
     end
   end

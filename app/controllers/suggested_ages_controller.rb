@@ -30,7 +30,10 @@ class SuggestedAgesController < ApplicationController
 
     respond_to do |format|
       if @suggested_age.save
-        format.html { redirect_to @suggested_age, notice: 'Suggested age was successfully created.' }
+        format.html { 
+          flash[:notice] = 'La edad sugerida se creó satisfactoriamente.'
+          redirect_to suggested_ages_path
+        }
         format.json { render :show, status: :created, location: @suggested_age }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class SuggestedAgesController < ApplicationController
   def update
     respond_to do |format|
       if @suggested_age.update(suggested_age_params)
-        format.html { redirect_to @suggested_age, notice: 'Suggested age was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'La edad sugerida se actualizó satisfactoriamente.'
+          redirect_to suggested_ages_path
+        }
         format.json { render :show, status: :ok, location: @suggested_age }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class SuggestedAgesController < ApplicationController
   def destroy
     @suggested_age.destroy
     respond_to do |format|
-      format.html { redirect_to suggested_ages_url, notice: 'Suggested age was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'La edad sugerida se eliminó satisfactoriamente.'
+        redirect_to suggested_ages_path
+      }
       format.json { head :no_content }
     end
   end

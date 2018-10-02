@@ -30,7 +30,10 @@ class GameLinesController < ApplicationController
 
     respond_to do |format|
       if @game_line.save
-        format.html { redirect_to @game_line, notice: 'Game line was successfully created.' }
+        format.html { 
+          flash[:notice] = 'La línea de juego se creó satisfactoriamente.'
+          redirect_to game_lines_path
+        }
         format.json { render :show, status: :created, location: @game_line }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class GameLinesController < ApplicationController
   def update
     respond_to do |format|
       if @game_line.update(game_line_params)
-        format.html { redirect_to @game_line, notice: 'Game line was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'La línea de juego se actualizó satisfactoriamente.'
+          redirect_to game_lines_path
+        }
         format.json { render :show, status: :ok, location: @game_line }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class GameLinesController < ApplicationController
   def destroy
     @game_line.destroy
     respond_to do |format|
-      format.html { redirect_to game_lines_url, notice: 'Game line was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'La línea de juego se eliminó satisfactoriamente.'
+        redirect_to game_lines_path
+      }
       format.json { head :no_content }
     end
   end

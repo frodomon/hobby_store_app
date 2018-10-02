@@ -29,7 +29,6 @@
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>Ver</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
@@ -38,7 +37,6 @@
                 <% @game_styles.each do |game_style| %>
                   <tr>
                     <td align="center"><%= game_style.name %></td>
-                    <td align="center"><%= link_to 'Ver',{ action: 'show', id: game_style.id}, class: 'btn btn-w-m btn-success btn-xs' %></td>
                     <td align="center"><%= link_to 'Editar', { action: 'edit', id: game_style.id}, class: 'btn btn-w-m btn-warning btn-xs' %></td>
                     <td align="center"><%= link_to 'Eliminar', { action: 'destroy', id: game_style.id}, method: :delete,  data: { confirm: '¿Está seguro?' }, class: 'btn btn-w-m btn-danger btn-xs' %></td>
                   </tr>

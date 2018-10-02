@@ -1,23 +1,21 @@
-<%= form_with(model: sub_category, local: true) do |form| %>
-  <% if sub_category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sub_category.errors.count, "error") %> prohibited this sub_category from being saved:</h2>
+<%= form_for @sub_category, local: true, html: { id: "submit-form"  } do |f| %>
+  <%= form_errors_for @sub_category %>
 
-      <ul>
-      <% sub_category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class= "<%= field_class(@sub_category, :name) %>">
+    <%= f.label :name, "Nombre", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.text_field :name, placeholder: "Nombre", class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-  <%= form.collection_select :category_id, Category.order(:name), :id, :name, options = { :prompt => 'Seleccione una Categoría'} %>
+
+  <div class= "<%= field_class(@sub_category, :category_id) %>">
+    <%= f.label :category_id, "Categoría", class: 'col-lg-4 col-md-4 col-sm-4 control-label' %>
+    <div class='col-lg-8 col-md-8 col-sm-8'>
+      <%= f.collection_select :category_id, Category.order(:name), :id, :name, options = { :prompt => 'Seleccione una Categoría'}, html_options = { class: 'form-select form-control', autofocus: true  } %>
+    </div>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-success block m-b' %>
   </div>
 <% end %>

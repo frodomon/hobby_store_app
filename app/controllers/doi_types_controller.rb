@@ -30,7 +30,10 @@ class DoiTypesController < ApplicationController
 
     respond_to do |format|
       if @doi_type.save
-        format.html { redirect_to @doi_type, notice: 'Doi type was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El tipo de documento de identidad se creó satisfactoriamente.'
+          redirect_to doi_types_path
+        }
         format.json { render :show, status: :created, location: @doi_type }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class DoiTypesController < ApplicationController
   def update
     respond_to do |format|
       if @doi_type.update(doi_type_params)
-        format.html { redirect_to @doi_type, notice: 'Doi type was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El tipo de documento de identidad se actualizó satisfactoriamente.'
+          redirect_to doi_types_path
+        }
         format.json { render :show, status: :ok, location: @doi_type }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class DoiTypesController < ApplicationController
   def destroy
     @doi_type.destroy
     respond_to do |format|
-      format.html { redirect_to doi_types_url, notice: 'Doi type was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El tipo de documento de identidad se eliminó satisfactoriamente.'
+        redirect_to doi_types_path
+      }
       format.json { head :no_content }
     end
   end

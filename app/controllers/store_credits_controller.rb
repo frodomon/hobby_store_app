@@ -30,7 +30,10 @@ class StoreCreditsController < ApplicationController
 
     respond_to do |format|
       if @store_credit.save
-        format.html { redirect_to @store_credit, notice: 'Store credit was successfully created.' }
+        format.html { 
+          flash[:notice] = 'El crédito en tienda se creó satisfactoriamente.'
+          redirect_to store_credits_path
+        }
         format.json { render :show, status: :created, location: @store_credit }
       else
         format.html { render :new }
@@ -44,7 +47,10 @@ class StoreCreditsController < ApplicationController
   def update
     respond_to do |format|
       if @store_credit.update(store_credit_params)
-        format.html { redirect_to @store_credit, notice: 'Store credit was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'El crédito en tienda se actualizó satisfactoriamente.'
+          redirect_to store_credits_path
+        }
         format.json { render :show, status: :ok, location: @store_credit }
       else
         format.html { render :edit }
@@ -58,7 +64,10 @@ class StoreCreditsController < ApplicationController
   def destroy
     @store_credit.destroy
     respond_to do |format|
-      format.html { redirect_to store_credits_url, notice: 'Store credit was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'El crédito en tienda se eliminó satisfactoriamente.'
+        redirect_to store_credits_path
+      }
       format.json { head :no_content }
     end
   end
